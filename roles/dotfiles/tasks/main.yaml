@@ -1,0 +1,53 @@
+---
+- name: Ensure dotfiles repository is cloned locally as user.
+  git:
+    repo: "{{ dotfiles_src }}"
+    dest: "{{ dotfiles_dest }}"
+  become: false
+  register: git
+  tags:
+    - dotfiles_git
+
+- name: Ensure dotfiles repository is cloned locally as root.
+  git:
+    repo: "{{ dotfiles_src }}"
+    dest: "{{ dotfiles_dest }}"
+  become: false
+  tags:
+    - dotfiles_git
+
+- name: Install all dotfiles as simple user
+  ansible.builtin.script: "{{ dotfiles_dest }}/install.sh"
+  become: false
+  when: git.changed
+  tags:
+    - dotfiles_links
+
+- name: Select files to be replaced
+  ansible.builtin.find:
+    paths: '~/'
+    patterns: "{{ [] | zip_longest(dotfiles_files_root | map('basename'), fillvalue='.') | map('join') | list }}"
+    file_type: file
+    recurse: no
+    use_regex: false
+    hidden: true
+  register: find_result
+  tags:
+    - dotfiles_links
+
+- name: Remove files to be replaced
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ find_result.files }}"
+  tags:
+    - dotfiles_links
+
+- name: Install dotfiles for the root user
+  file:
+    src: "{{ dotfiles_dest }}/{{ item }}"
+    dest: "~/.{{ item | basename }}"
+    state: link
+  loop: "{{ dotfiles_files_root }}"
+  tags:
+    - dotfiles_links
