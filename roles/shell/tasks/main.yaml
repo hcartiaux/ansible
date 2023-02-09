@@ -1,0 +1,13 @@
+---
+- name: get shell path
+  shell: "grep -e '/{{ shell_default }}$' /etc/shells"
+  register: shell_path
+  changed_when: false
+
+- name: change user shell to bash
+  become: true
+  user:
+    name: "{{ username }}"
+    shell: "{{ shell_path.stdout }}"
+  tags:
+    - shell_update
