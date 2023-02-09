@@ -1,0 +1,8 @@
+---
+- name: Install a base set of software packages.
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ generic_packages }}"
+  tags:
+    - generic_packages
