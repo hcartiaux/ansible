@@ -1,0 +1,16 @@
+---
+- name: d42
+  hosts: openbsd
+  roles:
+    - role: generic
+      tags:
+        - generic
+        - init
+    - role: dotfiles
+      tags:
+        - dotfiles
+        - init
+    - role: shell
+      tags:
+        - shell
+        - init
