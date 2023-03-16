@@ -4,10 +4,16 @@
   register: shell_path
   changed_when: false
 
-- name: change user shell to bash
+- name: get shell user
+  become: false
+  shell: "whoami"
+  register: shell_user
+  changed_when: false
+
+- name: "change {{ shell_user.stdout }} shell to {{ shell_path.stdout }}"
   become: true
   user:
-    name: "{{ username }}"
+    name: "{{ shell_user.stdout }}"
     shell: "{{ shell_path.stdout }}"
   tags:
     - shell_update

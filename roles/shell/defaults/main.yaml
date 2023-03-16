@@ -1,3 +1,2 @@
 ---
-username: "{{ ansible_user_id }}"
 shell_default: 'bash'
