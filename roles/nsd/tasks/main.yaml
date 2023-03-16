@@ -1,0 +1,19 @@
+---
+- name: Create base nsd configuration file
+  template:
+    src: config.j2
+    dest: "/var/nsd/etc/nsd.conf"
+    validate: 'nsd-checkconf %s'
+  notify:
+    - reload nsd database
+    - restart nsd
+
+- name: copy all zone files
+  copy:
+    src: "{{ item.zone_name }}.zone"
+    dest: /var/nsd/zones/master/
+    validate: "nsd-checkzone {{ item.zone_name }} %s"
+  notify:
+    - reload nsd database
+  loop: "{{ nsd_primary_zones }}"
+

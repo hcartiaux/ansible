@@ -1,0 +1,32 @@
+; -*-  mode: dns; -*-
+; Time-stamp: <Thu 2023-03-16 23:51:05 hcartiaux>
+; --------------------------------------------------------------------------
+$ORIGIN          nbsdn.eu.
+$TTL             86400
+@                86400 IN SOA   ns1.nbsdn.eu. hostmaster.nbsdn.eu. (
+                                2023031601 ; Serial
+                                10800      ; Refresh
+                                3600       ; Retry
+                                604800     ; Expire
+                                10800 )    ; Negative Cache TTL
+;
+
+@                         NS    ns1.nbsdn.eu.
+@                         AAAA  2a03:6000:6f70:604::207
+@                         A     46.23.91.207
+@                10800 IN MX 10 spool.mail.gandi.net.
+@                10800 IN MX 50 fb.mail.gandi.net.
+@                10800 IN TXT "v=spf1 include:_mailcust.gandi.net ?all"
+ns1                       AAAA  2a03:6000:6f70:604::207
+ns1                       A     46.23.91.207
+test                      A     127.0.0.1
+_imap._tcp       10800 IN SRV 0  0 0   .
+_imaps._tcp      10800 IN SRV 0  1 993 mail.gandi.net.
+_pop3._tcp       10800 IN SRV 0  0 0   .
+_pop3s._tcp      10800 IN SRV 10 1 995 mail.gandi.net.
+_submission._tcp 10800 IN SRV 0  1 465 mail.gandi.net.
+gm1._domainkey   10800 IN CNAME gm1.gandimail.net.
+gm2._domainkey   10800 IN CNAME gm2.gandimail.net.
+gm3._domainkey   10800 IN CNAME gm3.gandimail.net.
+webmail          10800 IN CNAME webmail.gandi.net.
+www              10800 IN CNAME webredir.vip.gandi.net.

@@ -1,0 +1,44 @@
+# $OpenBSD: nsd.conf,v 1.13 2018/08/16 17:59:12 florian Exp $
+# Generate by Ansible
+
+server:
+	hide-version: yes
+	verbosity: 1
+	database: "" # disable database
+
+## bind to a specific address/port
+#	ip-address: 192.0.2.53
+#	ip-address: 192.0.2.53@5678
+#	ip-address: 2001:db8::53
+
+remote-control:
+	control-enable: yes
+	control-interface: /var/run/nsd.sock
+
+## tsig key example
+#key:
+#	name: "tsig1.example.com."
+#	algorithm: hmac-sha256
+#	secret: "bWVrbWl0YXNkaWdvYXQ="
+
+## master zone example
+#zone:
+#	name: "example.com"
+#	zonefile: "master/example.com"
+#	notify: 192.0.2.1 NOKEY
+#	provide-xfr: 192.0.2.1 NOKEY
+
+## slave zone example
+#zone:
+#	name: "example.net"
+#	zonefile: "slave/example.net"
+#	allow-notify: 192.0.2.2 tsig1.example.com.
+#	request-xfr: 192.0.2.2 tsig1.example.com.
+
+
+{% for zone in nsd_primary_zones %}
+zone:
+	name: {{ zone.zone_name }}
+	zonefile: master/%s.zone
+
+{% endfor %}
