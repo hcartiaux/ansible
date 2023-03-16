@@ -1,0 +1,16 @@
+ansible_become_method: doas
+ansible_become_user: root
+ansible_python_interpreter: /usr/local/bin/python3.10
+
+root_group: "wheel"
+sudo_group: "wheel"
+default_shell: "/bin/ksh"
+
+generic_packages:
+  - python--%3.10
+  - bash
+  - git
+  - rsync--
+  - vim--no_x11
+  - rtorrent
+

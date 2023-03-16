@@ -1,0 +1,6 @@
+---
+- hosts: gateways
+  become: true
+  roles:
+    - role: nsd
+      tags: [ nsd, daemons ]

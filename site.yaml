@@ -1,6 +1,6 @@
 ---
-- name: d42
-  hosts: openbsd
+- hosts: all
+  become: true
   roles:
     - role: generic
       tags:
@@ -14,3 +14,4 @@
       tags:
         - shell
         - init
+- import_playbook: gateways.yaml

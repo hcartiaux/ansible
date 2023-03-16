@@ -1,2 +1,6 @@
+[gateways]
+gw1.nbsdn
+
 [openbsd]
-dn42
+gw1.nbsdn
+
