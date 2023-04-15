@@ -1,13 +1,18 @@
-$ORIGIN             nbsdn.fr.eu.org.
-$TTL    300
-@       3600  SOA   ns1.nbsdn.fr.eu.org. hostmaster.nbsdn.fr.eu.org. (
-        2018121401  ; serial YYYYMMDDnn
-        1440        ; refresh
-        3600        ; retry
-        604800      ; expire
-        300 )       ; minimum TTL
-@             NS    ns1.nbsdn.fr.eu.org.
-ns1           AAAA  2a03:6000:6f70:604::207
-ns1           A     46.23.91.207
-@             AAAA  2a03:6000:6f70:604::207
-@             A     46.23.91.207
+; -*-  mode: dns; -*-
+; Time-stamp: <Sat 2023-04-15 16:56:39 hcartiaux>
+; --------------------------------------------------------------------------
+$ORIGIN  nbsdn.fr.eu.org.
+$TTL     300
+@        3600  IN SOA   ns1.nbsdn.fr.eu.org. hostmaster.nbsdn.fr.eu.org. (
+                        2023041501 ; Serial
+                        10800      ; Refresh
+                        3600       ; Retry
+                        604800     ; Expire
+                        300 )      ; Negative Cache TTL
+
+; NBSDN infrastructure
+@              IN NS    ns1.nbsdn.fr.eu.org.
+@              IN AAAA  2a03:6000:6f70:604::207
+@              IN A     46.23.91.207
+ns1            IN CNAME nbsdn.fr.eu.org.
+gw1            IN CNAME nbsdn.fr.eu.org.
