@@ -1,10 +1,9 @@
 ---
 - name: reload nsd database
-  command: "/usr/sbin/nsd-control reload"
+  command: '/usr/sbin/nsd-control reload'
   become: true
 
 - name: restart nsd
   ansible.builtin.service:
-    name: "{{ nsd_service_name }}"
-    enabled: yes
+    name: nsd
     state: restarted

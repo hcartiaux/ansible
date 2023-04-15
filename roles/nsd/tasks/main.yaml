@@ -17,3 +17,8 @@
     - reload nsd database
   loop: "{{ nsd_primary_zones }}"
 
+- name: enable service nsd
+  ansible.builtin.service:
+    name: nsd
+    enabled: true
+
