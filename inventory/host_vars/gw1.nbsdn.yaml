@@ -1,3 +1,7 @@
 nsd_primary_zones:
   - zone_name: nbsdn.fr.eu.org
   - zone_name: nbsdn.eu
+
+generic_files:
+  - path: /etc/installurl
+    content: https://mirror.openbsd.amsterdam/pub/OpenBSD
