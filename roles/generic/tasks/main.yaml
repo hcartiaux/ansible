@@ -6,3 +6,15 @@
   loop: "{{ generic_packages }}"
   tags:
     - generic_packages
+
+# Render requested files
+- name: Install a base set of files
+  template:
+    src: generic_file.j2
+    dest: "{{ item.path }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('wheel') }}"
+    mode: "{{ item.mode | default('0644') }}"
+  loop: "{{ generic_files }}"
+  tags:
+    - generic_files
