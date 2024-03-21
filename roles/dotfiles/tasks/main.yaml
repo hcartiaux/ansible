@@ -12,7 +12,6 @@
   git:
     repo: "{{ dotfiles_src }}"
     dest: "{{ dotfiles_dest }}"
-  become: false
   tags:
     - dotfiles_git
 
@@ -32,6 +31,10 @@
     use_regex: false
     hidden: true
   register: find_result
+  when:
+    - dotfiles_files_root is defined
+    - dotfiles_files_root is iterable
+    - dotfiles_files_root | length > 0
   tags:
     - dotfiles_links
 
@@ -39,7 +42,7 @@
   file:
     path: "{{ item.path }}"
     state: absent
-  with_items: "{{ find_result.files }}"
+  with_items: "{{ find_result.files | default([]) }}"
   tags:
     - dotfiles_links
 
