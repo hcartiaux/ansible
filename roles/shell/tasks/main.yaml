@@ -1,6 +1,6 @@
 ---
 - name: get shell path
-  shell: "grep -e '/{{ shell_default }}$' /etc/shells"
+  shell: "grep -m 1 -e '/{{ shell_default }}$' /etc/shells"
   register: shell_path
   changed_when: false
 
