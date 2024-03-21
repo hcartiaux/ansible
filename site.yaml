@@ -1,5 +1,7 @@
 ---
 - hosts: all
+  vars_files:
+    - "inventory/os/{{ ansible_os_family }}.yaml"
   become: true
   roles:
     - role: generic
@@ -14,4 +16,11 @@
       tags:
         - shell
         - init
-- import_playbook: gateways.yaml
+  tasks:
+    - name: [DN42] Set-up NSD for OpenBSD
+      include_role:
+        name: nsd
+      when:
+        - "ansible_facts['os_family'] | lower == 'openbsd'"
+        - "'dn42' in group_names"
+      tags: [ nsd, daemons ]
