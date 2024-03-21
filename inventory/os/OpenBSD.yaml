@@ -1,13 +1,19 @@
 ansible_become_method: doas
-ansible_become_user: root
-ansible_python_interpreter: /usr/local/bin/python3.10
+
+generic_files:
+  - path: /etc/installurl
+    content: https://ftp.fr.openbsd.org/pub/OpenBSD/
 
 root_group: "wheel"
 sudo_group: "wheel"
 default_shell: "/bin/ksh"
 
+dotfiles_files_root:
+  - bash/profile
+  - ksh/kshrc
+
 generic_packages:
-  - python--%3.10
+  - python--%3.11
   - bash
   - git
   - rsync--

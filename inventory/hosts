@@ -1,6 +1,6 @@
-[gateways]
-gw1.nbsdn
+[dedibox]
+srv.nbsdn
 
-[openbsd]
-gw1.nbsdn
-
+[dn42]
+gw-dn42.nbsdn
+openbsd.nbsdn ansible_become_method=doas
