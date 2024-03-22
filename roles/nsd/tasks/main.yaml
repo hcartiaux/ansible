@@ -10,7 +10,7 @@
 
 - name: copy all zone files
   copy:
-    src: "{{ item.zone_name }}.zone"
+    src: "{{ playbook_dir }}/files/zones/{{ item.zone_name }}.zone"
     dest: /var/nsd/zones/master/
     validate: "nsd-checkzone {{ item.zone_name }} %s"
   notify:

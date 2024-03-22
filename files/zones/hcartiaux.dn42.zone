@@ -1,0 +1,21 @@
+; -*-  mode: dns; -*-
+; Time-stamp: <Thu 2024-03-21 16:48:42 hcartiaux>
+; --------------------------------------------------------------------------
+$ORIGIN  hcartiaux.dn42.
+$TTL     300
+@        3600  IN SOA   ns1.hcartiaux.dn42. hostmaster.hcartiaux.dn42. (
+                        2024032100 ; Serial
+                        10800      ; Refresh
+                        3600       ; Retry
+                        604800     ; Expire
+                        300 )      ; Negative Cache TTL
+
+; hcartiaux DN42 infrastructure
+@              IN NS    ns1.hcartiaux.dn42.
+@              IN NS    ns2.hcartiaux.dn42.
+@              IN AAAA  fd35:7515:7d51:53::1
+@              IN A     172.22.144.161
+ns1            IN AAAA  fd35:7515:7d51:53::1
+ns1            IN A     172.22.144.161
+ns2            IN AAAA  fd35:7515:7d51:53::2
+ns2            IN A     172.22.144.162
