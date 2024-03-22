@@ -3,4 +3,6 @@ srv.nbsdn
 
 [dn42]
 gw-dn42.nbsdn
+
+[shell]
 openbsd.nbsdn ansible_become_method=doas
