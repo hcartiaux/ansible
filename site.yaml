@@ -17,7 +17,7 @@
         - shell
         - init
   tasks:
-    - name: [DN42] Set-up NSD for OpenBSD
+    - name: "[DN42] Set-up NSD for OpenBSD"
       include_role:
         name: nsd
       when:
