@@ -17,10 +17,23 @@
         - shell
         - init
   tasks:
+    - name: "[DEDIBOX] Set-up bind for Debian"
+      include_role:
+        name: bind
+      when:
+        - "ansible_facts['os_family'] | lower == 'debian'"
+        - "'dedibox' in group_names"
+      tags: [ nsd, daemons ]
     - name: "[DN42] Set-up NSD for OpenBSD"
       include_role:
         name: nsd
       when:
         - "ansible_facts['os_family'] | lower == 'openbsd'"
+        - "'dn42' in group_names"
+    - name: "[DN42] Set-up bind for Debian"
+      include_role:
+        name: bind
+      when:
+        - "ansible_facts['os_family'] | lower == 'debian'"
         - "'dn42' in group_names"
       tags: [ nsd, daemons ]
