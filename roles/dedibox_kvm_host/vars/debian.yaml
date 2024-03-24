@@ -1,0 +1,19 @@
+# Distro specific variables for Debian
+---
+virt_packages:
+  - qemu-system
+  - libvirt-clients
+  - libvirt-daemon-system
+  - virtinst
+  - qemu-utils
+
+network_packages:
+  - bridge-utils
+  - iptables-persistent
+
+config_dir_network: "/etc/network/interfaces.d"
+config_file_network: "/etc/network/interfaces"
+config_file_dhclient6: "/etc/dhcp/dhclient6.conf"
+config_file_sysctl_ipv4: "/etc/sysctl.d/ipv4.conf"
+config_file_sysctl_ipv6: "/etc/sysctl.d/ipv6.conf"
+config_file_iptables: "/etc/iptables/rules.v4"

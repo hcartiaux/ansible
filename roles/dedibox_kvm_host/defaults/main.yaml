@@ -1,0 +1,16 @@
+---
+dedibox_kvm_host_dhcp_duid: "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
+dedibox_kvm_host_ipv6_block: "2001:xxx:xxx:100"
+
+dedibox_kvm_host_phys_iface_name: "enp1s0"
+dedibox_kvm_host_phys_iface_ipv4_address: "x.x.x.x"
+dedibox_kvm_host_phys_iface_ipv6_address: "{{ dedibox_kvm_host_ipv6_block }}::1"
+dedibox_kvm_host_phys_iface_ipv6_netmask: "64"
+
+dedibox_kvm_host_bridge_iface_name: "vmbr0"
+dedibox_kvm_host_bridge_iface_ipv6_address: "{{ dedibox_kvm_host_ipv6_block }}::2"
+dedibox_kvm_host_bridge_iface_ipv6_netmask: "64"
+dedibox_kvm_host_bridge_iface_ipv4_address: "192.168.0.1"
+dedibox_kvm_host_bridge_iface_ipv4_netmask: "255.255.0.0"
+
+dedibox_kvm_host_ipv4_port_mapping: []
