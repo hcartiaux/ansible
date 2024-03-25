@@ -1,18 +1,18 @@
 ---
-- name: get shell path
-  shell: "grep -m 1 -e '/{{ shell_default }}$' /etc/shells"
+- name: Get shell path
+  ansible.builtin.shell: grep -m 1 -e '/{{ shell_default }}$' /etc/shells
   register: shell_path
   changed_when: false
 
-- name: get shell user
+- name: Get shell user
   become: false
-  shell: "whoami"
+  ansible.builtin.command: whoami
   register: shell_user
   changed_when: false
 
-- name: "change {{ shell_user.stdout }} shell to {{ shell_path.stdout }}"
+- name: Change shell to {{ shell_path.stdout }}
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ shell_user.stdout }}"
     shell: "{{ shell_path.stdout }}"
   tags:
