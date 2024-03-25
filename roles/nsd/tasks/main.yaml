@@ -1,24 +1,23 @@
 ---
 - name: Create base nsd configuration file
-  template:
+  ansible.builtin.template:
     src: config.j2
-    dest: "/var/nsd/etc/nsd.conf"
-    validate: 'nsd-checkconf %s'
+    dest: /var/nsd/etc/nsd.conf
+    validate: nsd-checkconf %s
   notify:
     - reload nsd database
     - restart nsd
 
-- name: copy all zone files
-  copy:
+- name: Copy all zone files
+  ansible.builtin.copy:
     src: "{{ playbook_dir }}/files/zones/{{ item.zone_name }}.zone"
     dest: /var/nsd/zones/master/
-    validate: "nsd-checkzone {{ item.zone_name }} %s"
+    validate: nsd-checkzone {{ item.zone_name }} %s
   notify:
     - reload nsd database
   loop: "{{ nsd_primary_zones }}"
 
-- name: enable service nsd
+- name: Enable service nsd
   ansible.builtin.service:
     name: nsd
     enabled: true
-

@@ -1,37 +1,35 @@
 ---
 - name: Set OS-specific variables
-  include_vars: "{{ ansible_os_family | lower }}.yaml"
-
+  ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
 - name: Install bind packages
-  package:
+  ansible.builtin.package:
     pkg: "{{ item }}"
     state: present
   with_items:
     - "{{ bind_packages }}"
 
 - name: Create local named configuration file
-  template:
+  ansible.builtin.template:
     src: config.j2
     dest: "{{ bind_conf_dir }}/named.conf.local"
     owner: "{{ bind_owner }}"
     group: "{{ bind_group }}"
-    validate: 'named-checkconf %s'
+    validate: named-checkconf %s
   notify:
     - restart bind
 
-- name: copy all zone files
-  copy:
+- name: Copy all zone files
+  ansible.builtin.copy:
     src: "{{ playbook_dir }}/files/zones/{{ item.zone_name }}.zone"
     dest: "{{ bind_zone_dir }}/db.{{ item.zone_name }}"
     owner: "{{ bind_owner }}"
     group: "{{ bind_group }}"
-    validate: "named-checkzone {{ item.zone_name }} %s"
+    validate: named-checkzone {{ item.zone_name }} %s
   notify:
     - reload bind
   loop: "{{ bind_primary_zones }}"
 
-- name: enable service bind
+- name: Enable service bind
   ansible.builtin.service:
     name: "{{ bind_service }}"
     enabled: true
-

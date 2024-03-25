@@ -7,9 +7,8 @@ bind_packages:
 bind_service: bind9
 
 # Directory with run-time stuff
-bind_conf_dir: "/etc/bind"
+bind_conf_dir: /etc/bind
 bind_zone_dir: "{{ bind_conf_dir }}"
 
 bind_owner: root
 bind_group: bind
-

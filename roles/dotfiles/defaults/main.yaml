@@ -1,6 +1,6 @@
 ---
-dotfiles_src: "https://github.com/hcartiaux/dotfiles.git"
-dotfiles_dest: "~/.dotfiles"
+dotfiles_src: https://github.com/hcartiaux/dotfiles.git
+dotfiles_dest: ~/.dotfiles
 
 dotfiles_files_root:
   - bash/profile

@@ -1,6 +1,6 @@
 ---
 - name: Install a base set of software packages.
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   loop: "{{ generic_packages }}"
@@ -9,7 +9,7 @@
 
 # Render requested files
 - name: Install a base set of files
-  template:
+  ansible.builtin.template:
     src: generic_file.j2
     dest: "{{ item.path }}"
     owner: "{{ item.owner | default('root') }}"

@@ -1,41 +1,39 @@
 ---
 - name: Set OS-specific variables
-  include_vars: "{{ ansible_os_family | lower }}.yaml"
-
-
-- name: 'net.ipv4.ip_forward = 1'
+  ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
+- name: Net.ipv4.ip_forward = 1
   ansible.posix.sysctl:
-    name: 'net.ipv4.ip_forward'
-    value: '1'
+    name: net.ipv4.ip_forward
+    value: "1"
     sysctl_file: "{{ config_file_sysctl_ipv4 }}"
     sysctl_set: true
     reload: true
-- name: 'net.ipv4.conf.all.forwarding = 1'
+- name: Net.ipv4.conf.all.forwarding = 1
   ansible.posix.sysctl:
-    name: 'net.ipv4.conf.all.forwarding'
-    value: '1'
+    name: net.ipv4.conf.all.forwarding
+    value: "1"
     sysctl_file: "{{ config_file_sysctl_ipv4 }}"
     sysctl_set: true
     reload: true
 
-- name: 'net.ipv6.conf.all.forwarding = 1'
+- name: Net.ipv6.conf.all.forwarding = 1
   ansible.posix.sysctl:
-    name: 'net.ipv6.conf.all.forwarding'
-    value: '1'
+    name: net.ipv6.conf.all.forwarding
+    value: "1"
     sysctl_file: "{{ config_file_sysctl_ipv6 }}"
     sysctl_set: true
     reload: true
-- name: 'net.ipv6.conf.all.proxy_ndp = 1'
+- name: Net.ipv6.conf.all.proxy_ndp = 1
   ansible.posix.sysctl:
-    name: 'net.ipv6.conf.all.proxy_ndp'
-    value: '1'
+    name: net.ipv6.conf.all.proxy_ndp
+    value: "1"
     sysctl_file: "{{ config_file_sysctl_ipv6 }}"
     sysctl_set: true
     reload: true
-- name: 'net.ipv6.bindv6only = 1'
+- name: Net.ipv6.bindv6only = 1
   ansible.posix.sysctl:
-    name: 'net.ipv6.bindv6only'
-    value: '1'
+    name: net.ipv6.bindv6only
+    value: "1"
     sysctl_file: "{{ config_file_sysctl_ipv6 }}"
     sysctl_set: true
     reload: true
@@ -44,50 +42,46 @@
   community.general.modprobe:
     name: ipv6
     state: present
-    params: 'disable=0'
+    params: disable=0
     persistent: present
 
-
-- name: dhclient6 configuration
-  template:
-    src: "dhclient6.conf.j2"
+- name: Dhclient6 configuration
+  ansible.builtin.template:
+    src: dhclient6.conf.j2
     dest: "{{ config_file_dhclient6 }}"
 
 - name: Default network configuration
-  template:
-    src: "files/interfaces"
+  ansible.builtin.template:
+    src: files/interfaces
     dest: "{{ config_file_network }}"
   notify:
     - restart networking service
 
-- name: "Create network interface file for {{ dedibox_kvm_host_phys_iface_name }}"
-  template:
+- name: Create network interface file for {{ dedibox_kvm_host_phys_iface_name }}
+  ansible.builtin.template:
     src: phys_iface.j2
     dest: "{{ config_dir_network }}/{{ dedibox_kvm_host_phys_iface_name }}"
   notify:
     - restart networking service
 
-- name: "Create network interface file for {{ dedibox_kvm_host_bridge_iface_name }}"
-  template:
+- name: Create network interface file for {{ dedibox_kvm_host_bridge_iface_name }}
+  ansible.builtin.template:
     src: bridge_iface.j2
     dest: "{{ config_dir_network }}/{{ dedibox_kvm_host_bridge_iface_name }}"
   notify:
     - restart networking service
 
-
 - name: Install libvirt packages
-  package:
+  ansible.builtin.package:
     pkg: "{{ item }}"
     state: present
   with_items:
     - "{{ virt_packages }}"
     - "{{ network_packages }}"
 
-
-- name: "Create iptables rule file"
-  template:
+- name: Create iptables rule file
+  ansible.builtin.template:
     src: rules.v4.j2
     dest: "{{ config_file_iptables }}"
   notify:
     - restore iptables configuration
-
