@@ -1,10 +1,10 @@
 ---
-- name: Restart networking service
+- name: restart networking service
   ansible.builtin.service:
     name: networking
     state: restarted
 
-- name: Restore iptables configuration
+- name: restore iptables configuration
   community.general.iptables_state:
     state: restored
     path: "{{ config_file_iptables }}"
