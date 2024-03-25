@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Sat 2024-03-11 02:28:00 hcartiaux>
+; Time-stamp: <Mon 2024-03-25 16:33:35 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  nbsdn.fr.eu.org.
 $TTL     300
 @        3600  IN SOA   ns1.nbsdn.fr.eu.org. hostmaster.nbsdn.fr.eu.org. (
-                        2024031800 ; Serial
+                        2024032500 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -17,4 +17,5 @@ $TTL     300
 ns1            IN AAAA  2001:bc8:3feb:100::1
 srv            IN CNAME nbsdn.fr.eu.org.
 gw-dn42        IN AAAA  2001:bc8:3feb:100::3
+gw-dn42        IN A     51.15.171.197
 openbsd        IN AAAA  2001:bc8:3feb:100::4
