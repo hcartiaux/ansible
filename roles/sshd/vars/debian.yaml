@@ -1,0 +1,6 @@
+# Distro specific variables for Debian
+---
+sshd_service: sshd
+sshd_conf_file: /etc/ssh/sshd_config
+sshd_owner: root
+sshd_group: root

@@ -1,0 +1,14 @@
+---
+- name: Set OS-specific variables
+  ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
+
+- name: Create local sshd configuration file
+  ansible.builtin.template:
+    src: files/{{ ansible_os_family | lower }}
+    dest: "{{ sshd_conf_file }}"
+    owner: "{{ sshd_owner }}"
+    group: "{{ sshd_group }}"
+    mode: "0644"
+    validate: sshd -t -f %s
+  notify:
+    - restart sshd
