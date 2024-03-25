@@ -1,6 +1,7 @@
 ---
 - name: Set OS-specific variables
   ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
+
 - name: Net.ipv4.ip_forward = 1
   ansible.posix.sysctl:
     name: net.ipv4.ip_forward
