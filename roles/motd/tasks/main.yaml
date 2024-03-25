@@ -1,5 +1,5 @@
 ---
-- name: copy motd file
-  copy:
+- name: Copy motd file
+  ansible.builtin.copy:
     src: "{{ playbook_dir }}/files/motd/{{ inventory_hostname }}"
-    dest: "/etc/motd"
+    dest: /etc/motd
