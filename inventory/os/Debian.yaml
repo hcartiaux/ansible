@@ -16,5 +16,6 @@ generic_packages:
   - htop
   - strace
   - git
+  - tig
   - curl
   - wget

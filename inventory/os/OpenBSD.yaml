@@ -16,6 +16,7 @@ generic_packages:
   - python--%3.11
   - bash
   - git
+  - tig
   - rsync--
   - vim--no_x11
   - rtorrent
