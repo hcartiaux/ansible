@@ -8,6 +8,14 @@
       tags:
         - generic
         - init
+    - role: motd
+      tags:
+        - motd
+        - init
+    - role: sshd
+      tags:
+        - sshd
+        - init
     - role: dotfiles
       tags:
         - dotfiles
