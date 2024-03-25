@@ -10,6 +10,7 @@ generic_packages:
   - python3
   - python3-apt
   - vim
+  - man
   - tmux
   - tcpdump
   - dnsutils

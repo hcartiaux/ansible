@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars_files:
-    - "inventory/os/{{ ansible_os_family }}.yaml"
+    - "inventory/os/{{ ansible_os_family | lower }}.yaml"
   become: true
   roles:
     - role: generic
