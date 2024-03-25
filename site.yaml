@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars_files:
-    - "inventory/os/{{ ansible_os_family | lower }}.yaml"
+    - inventory/os/{{ ansible_os_family | lower }}.yaml
   become: true
   roles:
     - role: generic
@@ -26,32 +26,32 @@
         - init
   tasks:
     - name: "[DEDIBOX] Set-up bind for Debian"
-      import_role:
+      ansible.builtin.import_role:
         name: bind
       when:
-        - "ansible_facts['os_family'] | lower == 'debian'"
+        - ansible_facts['os_family'] | lower == 'debian'
         - "'dedibox' in group_names"
-      tags: [ dedibox, bind ]
+      tags: [dedibox, bind]
     - name: "[DEDIBOX] Set-up libvirt for Debian"
-      import_role:
+      ansible.builtin.import_role:
         name: dedibox_kvm_host
       when:
-        - "ansible_facts['os_family'] | lower == 'debian'"
+        - ansible_facts['os_family'] | lower == 'debian'
         - "'dedibox' in group_names"
-      tags: [ dedibox, kvm ]
+      tags: [dedibox, kvm]
 
 
     - name: "[DN42] Set-up NSD for OpenBSD"
-      import_role:
+      ansible.builtin.import_role:
         name: nsd
       when:
-        - "ansible_facts['os_family'] | lower == 'openbsd'"
+        - ansible_facts['os_family'] | lower == 'openbsd'
         - "'dn42' in group_names"
-      tags: [ dn42, nsd ]
+      tags: [dn42, nsd]
     - name: "[DN42] Set-up bind for Debian"
-      import_role:
+      ansible.builtin.import_role:
         name: bind
       when:
-        - "ansible_facts['os_family'] | lower == 'debian'"
+        - ansible_facts['os_family'] | lower == 'debian'
         - "'dn42' in group_names"
-      tags: [ dn42, bind ]
+      tags: [dn42, bind]
