@@ -1,12 +1,13 @@
+---
 ansible_become_method: doas
 
 generic_files:
   - path: /etc/installurl
     content: https://ftp.fr.openbsd.org/pub/OpenBSD/
 
-root_group: "wheel"
-sudo_group: "wheel"
-default_shell: "/bin/ksh"
+root_group: wheel
+sudo_group: wheel
+default_shell: /bin/ksh
 
 dotfiles_files_root:
   - bash/profile
@@ -20,4 +21,3 @@ generic_packages:
   - rsync--
   - vim--no_x11
   - rtorrent
-
