@@ -3,8 +3,12 @@
 :OUTPUT ACCEPT [0:0]
 :POSTROUTING ACCEPT [0:0]
 {% for item in dedibox_kvm_host_ipv4_port_mapping %}
-# Modify the destination address/port of packets received on port {{ item.source_port }}
+# Modify the destination address/port of packets received on port {{ item.protocol }}/{{ item.source_port }}
+{% if item.protocol == 'tcp' %}
 -A PREROUTING -d  {{ dedibox_kvm_host_phys_iface_ipv4_address }}/32 -p tcp -m tcp --syn --dport {{ item.source_port }}  -j DNAT --to-destination {{item.destination_ip}}:{{item.destination_port}}
+{% elif item.protocol == 'udp' %}
+-A PREROUTING -d  {{ dedibox_kvm_host_phys_iface_ipv4_address }}/32 -p udp -m udp --dport {{ item.source_port }}  -j DNAT --to-destination {{item.destination_ip}}:{{item.destination_port}}
+{% endif %}
 {% endfor %}
 # Do not masquerade to these reserved address blocks.
 -A POSTROUTING -s 192.168.0.0/16 -d 224.0.0.0/24 -j RETURN
@@ -27,7 +31,11 @@ COMMIT
 -A FORWARD -i {{ dedibox_kvm_host_bridge_iface_name }} -o {{ dedibox_kvm_host_bridge_iface_name }} -j ACCEPT
 # Allow packets that have been forwarded to particular ports on a VM
 {% for item in dedibox_kvm_host_ipv4_port_mapping %}
+{% if item.protocol == 'tcp' %}
 -A FORWARD -d {{ item.destination_ip }}/32 -o {{ dedibox_kvm_host_bridge_iface_name }} -p tcp -m tcp --syn -m conntrack --ctstate NEW --dport {{ item.destination_port }} -j ACCEPT
+{% elif item.protocol == 'udp' %}
+-A FORWARD -d {{ item.destination_ip }}/32 -o {{ dedibox_kvm_host_bridge_iface_name }} -p udp -m udp --dport {{ item.destination_port }} -j ACCEPT
+{% endif %}
 {% endfor %}
 # Reject everything else.
 -A FORWARD -i {{ dedibox_kvm_host_bridge_iface_name }} -j REJECT --reject-with icmp-port-unreachable
