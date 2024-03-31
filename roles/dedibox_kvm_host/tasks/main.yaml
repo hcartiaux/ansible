@@ -88,7 +88,7 @@
 - name: Adding user {{ shell_user.stdout }} to group libvirt
   ansible.builtin.user:
     name: "{{ shell_user.stdout }}"
-    groups: libvirt
+    groups: "{{ virt_group }}"
     append: true
 
 

@@ -7,6 +7,8 @@ virt_packages:
   - virtinst
   - qemu-utils
 
+virt_group: libvirt
+
 network_packages:
   - bridge-utils
   - iptables-persistent
