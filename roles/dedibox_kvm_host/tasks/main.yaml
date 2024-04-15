@@ -80,6 +80,12 @@
     - "{{ virt_packages }}"
     - "{{ network_packages }}"
 
+- name: Apparmor configuration
+  ansible.builtin.template:
+    src: TEMPLATE.qemu.j2
+    dest: "{{ config_file_apparmor_libvirt }}"
+
+
 - name: Get shell user
   become: false
   ansible.builtin.command: whoami

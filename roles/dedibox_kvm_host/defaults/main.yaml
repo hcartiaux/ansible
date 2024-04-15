@@ -14,3 +14,5 @@ dedibox_kvm_host_bridge_iface_ipv4_address: 192.168.0.1
 dedibox_kvm_host_bridge_iface_ipv4_netmask: 255.255.0.0
 
 dedibox_kvm_host_ipv4_port_mapping: []
+
+dedibox_kvm_host_custom_image_path: "/var/lib/libvirt/terraform"
