@@ -8,6 +8,6 @@ dedibox_kvm_host_phys_iface_ipv4_address: 51.15.171.197
 
 dedibox_kvm_host_ipv4_port_mapping:
   - source_port: 51820
-    destination_ip: 192.168.0.3
+    destination_ip: 192.168.0.9
     destination_port: 51820
     protocol: "udp"
