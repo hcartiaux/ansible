@@ -4,7 +4,7 @@
 $ORIGIN  nbsdn.fr.eu.org.
 $TTL     300
 @        3600  IN SOA   ns1.nbsdn.fr.eu.org. hostmaster.nbsdn.fr.eu.org. (
-                        2024041501 ; Serial
+                        2024042000 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -16,6 +16,7 @@ $TTL     300
 @              IN A     51.15.171.197
 ns1            IN AAAA  2001:bc8:3feb:100::1
 srv            IN CNAME nbsdn.fr.eu.org.
+podman         IN AAAA  2001:bc8:3feb:100::8
 gw-dn42        IN AAAA  2001:bc8:3feb:100::9
 gw-dn42        IN A     51.15.171.197
 shell          IN AAAA  2001:bc8:3feb:100::10
