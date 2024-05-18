@@ -6,3 +6,4 @@ gw-dn42.nbsdn
 
 [shell]
 shell.nbsdn ansible_become_method=doas
+podman.nbsdn
