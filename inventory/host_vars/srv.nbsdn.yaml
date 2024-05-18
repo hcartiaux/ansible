@@ -7,6 +7,10 @@ dedibox_kvm_host_ipv6_block: 2001:bc8:3feb:100
 dedibox_kvm_host_phys_iface_ipv4_address: 51.15.171.197
 
 dedibox_kvm_host_ipv4_port_mapping:
+  - source_port: 443
+    destination_ip: 192.168.0.1
+    destination_port: 222
+    protocol: "tcp"
   - source_port: 51820
     destination_ip: 192.168.0.9
     destination_port: 51820
