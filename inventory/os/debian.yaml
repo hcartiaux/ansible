@@ -21,3 +21,5 @@ generic_packages:
   - tig
   - curl
   - wget
+  - rsync
+  - make
