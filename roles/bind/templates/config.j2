@@ -10,8 +10,27 @@
 
 {% for zone in bind_primary_zones %}
 zone "{{ zone.zone_name }}" {
-        type master;
+        type primary;
         file "{{ bind_zone_dir }}/db.{{ zone.zone_name }}";
+        notify yes;
+        allow-transfer {
+{% for server in zone.secondary_servers %}
+            {{server}};
+{% endfor %}
+        };
+};
+
+{% endfor %}
+
+{% for zone in bind_secondary_zones %}
+zone "{{ zone.zone_name }}" {
+        type secondary;
+        file "{{ bind_zone_dir }}/db.{{ zone.zone_name }}.saved";
+        primaries {
+{% for server in zone.primary_servers %}
+            {{server}};
+{% endfor %}
+        };
 };
 
 {% endfor %}
