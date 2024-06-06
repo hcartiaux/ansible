@@ -1,0 +1,3 @@
+bind_secondary_zones:
+  - zone_name: hcartiaux.dn42
+    primary_servers: ['fd28:7515:7d51:a::1']
