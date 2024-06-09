@@ -20,8 +20,8 @@
 
 - name: Copy all zone files
   ansible.builtin.copy:
-    src: "{{ playbook_dir }}/files/zones/{{ item.zone_name }}.zone"
-    dest: "{{ bind_zone_dir }}/db.{{ item.zone_name }}"
+    src: "{{ playbook_dir }}/files/zones/{{ item.zone_name | replace('/', '-') }}.zone"
+    dest: "{{ bind_zone_dir }}/db.{{ item.zone_name | replace('/', '-') }}"
     owner: "{{ bind_owner }}"
     group: "{{ bind_group }}"
     validate: named-checkzone {{ item.zone_name }} %s
