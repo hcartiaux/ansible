@@ -1,2 +1,4 @@
 bind_primary_zones: []
 bind_secondary_zones: []
+bind_forward: []
+bind_options: []

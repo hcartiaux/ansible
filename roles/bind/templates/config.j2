@@ -34,3 +34,15 @@ zone "{{ zone.zone_name }}" {
 };
 
 {% endfor %}
+
+{% for zone in bind_forward %}
+zone "{{ zone.zone_name }}" {
+        type forward;
+        forwarders {
+{% for server in zone.forwarders %}
+            {{server}};
+{% endfor %}
+        };
+};
+
+{% endfor %}
