@@ -1,0 +1,18 @@
+; -*-  mode: dns; -*-
+; Time-stamp: <Sun 2024-06-09 14:19:59 hcartiaux>
+; --------------------------------------------------------------------------
+$ORIGIN  160/27.144.22.172.in-addr.arpa.
+$TTL     300
+@        3600  IN SOA   ns1.hcartiaux.dn42. hostmaster.hcartiaux.dn42. (
+                        2024060900 ; Serial
+                        10800      ; Refresh
+                        3600       ; Retry
+                        604800     ; Expire
+                        300 )      ; Negative Cache TTL
+
+@              IN NS    ns1.hcartiaux.dn42.
+@              IN NS    ns2.hcartiaux.dn42.
+
+161            IN PTR   ns1.hcartiaux.dn42.
+177            IN PTR   ns2.hcartiaux.dn42.
+

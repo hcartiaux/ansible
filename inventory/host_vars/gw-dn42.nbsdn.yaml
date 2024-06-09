@@ -2,6 +2,10 @@
 bind_primary_zones:
   - zone_name: hcartiaux.dn42
     secondary_servers: ['fd28:7515:7d51:c::1']
+  - zone_name: 160/27.144.22.172.in-addr.arpa
+    secondary_servers: ['fd28:7515:7d51:c::1']
+  - zone_name: 1.5.d.7.5.1.5.7.8.2.d.f.ip6.arpa
+    secondary_servers: ['fd28:7515:7d51:c::1']
 
 # nsd_primary_zones:
 #   - zone_name: hcartiaux.dn42
