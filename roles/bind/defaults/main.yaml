@@ -1,4 +1,8 @@
 bind_primary_zones: []
 bind_secondary_zones: []
 bind_forward: []
-bind_options: []
+bind_listen_on: [ "any" ]
+bind_listen_on_v6: [ "any" ]
+bind_dnssec_validation: "auto"
+bind_empty_zones_enable: "yes"
+bind_validate_except: []

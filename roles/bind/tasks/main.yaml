@@ -8,6 +8,16 @@
   with_items:
     - "{{ bind_packages }}"
 
+- name: Create options named configuration file
+  ansible.builtin.template:
+    src: options.j2
+    dest: "{{ bind_conf_dir }}/named.conf.options"
+    owner: "{{ bind_owner }}"
+    group: "{{ bind_group }}"
+    validate: named-checkconf %s
+  notify:
+    - restart bind
+
 - name: Create local named configuration file
   ansible.builtin.template:
     src: config.j2
