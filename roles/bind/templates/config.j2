@@ -25,7 +25,7 @@ zone "{{ zone.zone_name }}" {
 {% for zone in bind_secondary_zones %}
 zone "{{ zone.zone_name }}" {
         type secondary;
-        file "{{ bind_zone_dir }}/db.{{ zone.zone_name | replace('/', '-') }}.saved";
+        file "db.{{ zone.zone_name | replace('/', '-') }}.saved";
         primaries {
 {% for server in zone.primary_servers %}
             {{server}};
