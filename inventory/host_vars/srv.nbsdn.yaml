@@ -2,6 +2,7 @@
 bind_primary_zones:
   - zone_name: nbsdn.fr.eu.org
     secondary_servers: []
+bind_listen_on: [ "127.0.0.1" ]
 
 dedibox_kvm_host_dhcp_duid: "***REMOVED***"
 dedibox_kvm_host_ipv6_block: 2001:bc8:3feb:100
