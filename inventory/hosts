@@ -6,5 +6,6 @@ gw-dn42.nbsdn
 gw2-dn42.nbsdn
 
 [shell]
+librenms-dn42.nbsdn
 shell.nbsdn ansible_become_method=doas
 podman.nbsdn
