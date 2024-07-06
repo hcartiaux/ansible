@@ -2,6 +2,10 @@
 - name: Set OS-specific variables
   ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
 
+###
+# Kernel configuration
+###
+
 - name: Sysctl net.ipv4.ip_forward = 1
   ansible.posix.sysctl:
     name: net.ipv4.ip_forward
@@ -46,6 +50,10 @@
     params: disable=0
     persistent: present
 
+###
+# Network configuration
+###
+
 - name: Dhclient6 configuration
   ansible.builtin.template:
     src: dhclient6.conf.j2
@@ -56,21 +64,32 @@
     src: files/interfaces
     dest: "{{ config_file_network }}"
   notify:
-    - restart networking service
+    - Restart networking service
 
 - name: Create network interface file for {{ dedibox_kvm_host_phys_iface_name }}
   ansible.builtin.template:
     src: phys_iface.j2
     dest: "{{ config_dir_network }}/{{ dedibox_kvm_host_phys_iface_name }}"
   notify:
-    - restart networking service
+    - Restart networking service
 
 - name: Create network interface file for {{ dedibox_kvm_host_bridge_iface_name }}
   ansible.builtin.template:
     src: bridge_iface.j2
     dest: "{{ config_dir_network }}/{{ dedibox_kvm_host_bridge_iface_name }}"
   notify:
-    - restart networking service
+    - Restart networking service
+
+- name: Create iptables rule file
+  ansible.builtin.template:
+    src: rules.v4.j2
+    dest: "{{ config_file_iptables }}"
+  notify:
+    - Restore iptables configuration
+
+###
+# Hypervisor configuration
+###
 
 - name: Install libvirt packages
   ansible.builtin.package:
@@ -85,7 +104,6 @@
     src: TEMPLATE.qemu.j2
     dest: "{{ config_file_apparmor_libvirt }}"
 
-
 - name: Get shell user
   become: false
   ansible.builtin.command: whoami
@@ -96,11 +114,3 @@
     name: "{{ shell_user.stdout }}"
     groups: "{{ virt_group }}"
     append: true
-
-
-- name: Create iptables rule file
-  ansible.builtin.template:
-    src: rules.v4.j2
-    dest: "{{ config_file_iptables }}"
-  notify:
-    - restore iptables configuration

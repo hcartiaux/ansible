@@ -16,13 +16,13 @@
     owner: "{{ snmpd_owner }}"
     group: "{{ snmpd_group }}"
   notify:
-    - restart snmpd
+    - Restart snmpd
 
 - name: Download distro
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/librenms/librenms-agent/master/snmp/distro
     dest: /usr/bin/distro
-    mode: '0755'
+    mode: "0755"
 
 - name: Enable service snmpd
   ansible.builtin.service:

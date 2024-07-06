@@ -1,32 +1,32 @@
 ---
 bind_forward:
   - zone_name: dn42
-    forwarders: [ "fd42:d42:d42:53::1", "fd42:d42:d42:54::1" ]
+    forwarders: [fd42:d42:d42:53::1, fd42:d42:d42:54::1]
   - zone_name: 20.172.in-addr.arpa
-    forwarders: [ "fd42:d42:d42:53::1", "fd42:d42:d42:54::1" ]
+    forwarders: [fd42:d42:d42:53::1, fd42:d42:d42:54::1]
   - zone_name: 21.172.in-addr.arpa
-    forwarders: [ "fd42:d42:d42:53::1", "fd42:d42:d42:54::1" ]
+    forwarders: [fd42:d42:d42:53::1, fd42:d42:d42:54::1]
   - zone_name: 22.172.in-addr.arpa
-    forwarders: [ "fd42:d42:d42:53::1", "fd42:d42:d42:54::1" ]
+    forwarders: [fd42:d42:d42:53::1, fd42:d42:d42:54::1]
   - zone_name: 23.172.in-addr.arpa
-    forwarders: [ "fd42:d42:d42:53::1", "fd42:d42:d42:54::1" ]
+    forwarders: [fd42:d42:d42:53::1, fd42:d42:d42:54::1]
   - zone_name: 10.in-addr.arpa
-    forwarders: [ "fd42:d42:d42:53::1", "fd42:d42:d42:54::1" ]
+    forwarders: [fd42:d42:d42:53::1, fd42:d42:d42:54::1]
   - zone_name: d.f.ip6.arpa
-    forwarders: [ "fd42:d42:d42:53::1", "fd42:d42:d42:54::1" ]
-bind_listen_on: [ "any" ]
-bind_listen_on_v6: [ "any" ]
-bind_dnssec_validation: "auto"
+    forwarders: [fd42:d42:d42:53::1, fd42:d42:d42:54::1]
+bind_listen_on: [any]
+bind_listen_on_v6: [any]
+bind_dnssec_validation: auto
 bind_empty_zones_enable: "no"
 bind_validate_except:
-  - "dn42"
-  - "20.172.in-addr.arpa"
-  - "21.172.in-addr.arpa"
-  - "22.172.in-addr.arpa"
-  - "23.172.in-addr.arpa"
-  - "10.in-addr.arpa"
-  - "d.f.ip6.arpa"
+  - dn42
+  - 20.172.in-addr.arpa
+  - 21.172.in-addr.arpa
+  - 22.172.in-addr.arpa
+  - 23.172.in-addr.arpa
+  - 10.in-addr.arpa
+  - d.f.ip6.arpa
 
-snmpd_com2sec: "dn42"
-snmpd_syslocation: "Rack D25, Room 1 1, Block E, Position 1, Server 4, fr-par2 - DC5, Paris, France"
-snmpd_syscontact: "Hyacinthe Cartiaux <hyacinthe.cartiaux@gmail.com>"
+snmpd_com2sec: dn42
+snmpd_syslocation: Rack D25, Room 1 1, Block E, Position 1, Server 4, fr-par2 - DC5, Paris, France
+snmpd_syscontact: Hyacinthe Cartiaux <hyacinthe.cartiaux@gmail.com>

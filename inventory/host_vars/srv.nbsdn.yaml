@@ -2,9 +2,8 @@
 bind_primary_zones:
   - zone_name: nbsdn.fr.eu.org
     secondary_servers: []
-bind_listen_on: [ "127.0.0.1" ]
-
-dedibox_kvm_host_dhcp_duid: "***REMOVED***"
+bind_listen_on: [127.0.0.1]
+dedibox_kvm_host_dhcp_duid: ***REMOVED***
 dedibox_kvm_host_ipv6_block: 2001:bc8:3feb:100
 dedibox_kvm_host_phys_iface_ipv4_address: 51.15.171.197
 
@@ -12,32 +11,32 @@ dedibox_kvm_host_ipv4_port_mapping:
   - source_port: 443
     destination_ip: 192.168.0.1
     destination_port: 222
-    protocol: "tcp"
+    protocol: tcp
   - source_port: 51820
     destination_ip: 192.168.0.9
     destination_port: 51820
-    protocol: "udp"
+    protocol: udp
   - source_port: 51821
     destination_ip: 192.168.0.9
     destination_port: 51821
-    protocol: "udp"
+    protocol: udp
   - source_port: 51822
     destination_ip: 192.168.0.9
     destination_port: 51822
-    protocol: "udp"
+    protocol: udp
   - source_port: 51900
     destination_ip: 192.168.0.9
     destination_port: 51900
-    protocol: "udp"
+    protocol: udp
   - source_port: 51880
     destination_ip: 192.168.0.6
     destination_port: 51880
-    protocol: "udp"
+    protocol: udp
   - source_port: 51881
     destination_ip: 192.168.0.6
     destination_port: 51881
-    protocol: "udp"
+    protocol: udp
   - source_port: 51882
     destination_ip: 192.168.0.6
     destination_port: 51882
-    protocol: "udp"
+    protocol: udp

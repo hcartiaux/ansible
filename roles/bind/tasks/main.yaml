@@ -16,7 +16,7 @@
     group: "{{ bind_group }}"
     validate: named-checkconf %s
   notify:
-    - restart bind
+    - Restart bind
 
 - name: Create local named configuration file
   ansible.builtin.template:
@@ -26,7 +26,7 @@
     group: "{{ bind_group }}"
     validate: named-checkconf %s
   notify:
-    - restart bind
+    - Restart bind
 
 - name: Copy all zone files
   ansible.builtin.copy:
@@ -36,7 +36,7 @@
     group: "{{ bind_group }}"
     validate: named-checkzone {{ item.zone_name }} %s
   notify:
-    - reload bind
+    - Reload bind
   loop: "{{ bind_primary_zones }}"
 
 - name: Enable service bind

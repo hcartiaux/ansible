@@ -1,4 +1,5 @@
-snmpd_com2sec: "public"
-snmpd_syslocation: "Rack, Room, Building, City, Country [Lat, Lon]"
-snmpd_syscontact: "Your Name <your@email.address>"
-snmpd_distro: "/usr/bin/distro"
+---
+snmpd_com2sec: public
+snmpd_syslocation: Rack, Room, Building, City, Country [Lat, Lon]
+snmpd_syscontact: Your Name <your@email.address>
+snmpd_distro: /usr/bin/distro
