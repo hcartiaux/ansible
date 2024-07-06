@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Thu 2024-06-20 23:23:55 hcartiaux>
+; Time-stamp: <Sat 2024-07-06 14:24:27 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  nbsdn.fr.eu.org.
 $TTL     300
 @        3600  IN SOA   ns1.nbsdn.fr.eu.org. hostmaster.nbsdn.fr.eu.org. (
-                        2024062000 ; Serial
+                        2024070600 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -25,7 +25,6 @@ gw2-dn42       IN A     51.15.171.197
 librenms-dn42  IN AAAA  2001:bc8:3feb:100::5
 
 ; Convenience
-podman         IN AAAA  2001:bc8:3feb:100::8
 shell          IN AAAA  2001:bc8:3feb:100::10
 
 
