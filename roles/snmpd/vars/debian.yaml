@@ -1,0 +1,12 @@
+# Distro specific variables for Debian
+---
+snmpd_packages:
+  - snmpd
+
+snmpd_service: snmpd
+
+# Directory with run-time stuff
+snmpd_conf_dir: /etc/snmp
+
+snmpd_owner: root
+snmpd_group: Debian-snmp
