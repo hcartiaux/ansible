@@ -1,10 +1,16 @@
 [dedibox]
 srv.nbsdn
 
-[dn42]
+[dn42_gw]
 gw-dn42.nbsdn
 gw2-dn42.nbsdn
 
-[shell]
+[dn42_servers]
 librenms-dn42.nbsdn
+
+[dn42:children]
+dn42_gw
+dn42_servers
+
+[shell]
 shell.nbsdn ansible_become_method=doas
