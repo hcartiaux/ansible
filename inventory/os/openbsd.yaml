@@ -3,7 +3,7 @@ ansible_become_method: doas
 
 generic_files:
   - path: /etc/installurl
-    content: https://ftp.fr.openbsd.org/pub/OpenBSD/
+    content: https://cdn.openbsd.org/pub/OpenBSD
 
 root_group: wheel
 sudo_group: wheel
