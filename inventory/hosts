@@ -1,6 +1,17 @@
+# Hypervisors
 [dedibox]
 srv.nbsdn
 
+# DNS infra
+[dns]
+srv.nbsdn
+boxybsd1.nbsdn ansible_become_method=doas
+
+# Convenience - shell server/jump host
+[shell]
+shell.nbsdn    ansible_become_method=doas
+
+# DN42 Infra - AS4242420263
 [dn42_gw]
 gw-dn42.nbsdn
 gw2-dn42.nbsdn
@@ -12,5 +23,3 @@ librenms-dn42.nbsdn
 dn42_gw
 dn42_servers
 
-[shell]
-shell.nbsdn ansible_become_method=doas
