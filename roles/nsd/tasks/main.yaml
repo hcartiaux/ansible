@@ -1,11 +1,15 @@
 ---
+- name: Enable service nsd
+  ansible.builtin.service:
+    name: nsd
+    enabled: true
+
 - name: Create base nsd configuration file
   ansible.builtin.template:
     src: config.j2
     dest: /var/nsd/etc/nsd.conf
     validate: nsd-checkconf %s
   notify:
-    - Reload nsd database
     - Restart nsd
 
 - name: Copy all zone files
@@ -16,8 +20,3 @@
   notify:
     - Reload nsd database
   loop: "{{ nsd_primary_zones }}"
-
-- name: Enable service nsd
-  ansible.builtin.service:
-    name: nsd
-    enabled: true
