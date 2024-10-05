@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Sat 2024-07-06 14:24:27 hcartiaux>
+; Time-stamp: <Sun 2024-09-29 15:03:36 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  nbsdn.fr.eu.org.
 $TTL     300
 @        3600  IN SOA   ns1.nbsdn.fr.eu.org. hostmaster.nbsdn.fr.eu.org. (
-                        2024070600 ; Serial
+                        2024092900 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -12,10 +12,16 @@ $TTL     300
 
 ; NBSDN infrastructure
 @              IN NS    ns1.nbsdn.fr.eu.org.
+@              IN NS    ns2.nbsdn.fr.eu.org.
+
 @              IN AAAA  2001:bc8:3feb:100::1
 @              IN A     51.15.171.197
+
 ns1            IN AAAA  2001:bc8:3feb:100::1
 srv            IN CNAME nbsdn.fr.eu.org.
+
+ns2            IN AAAA  2a13:e3c1:400e:1337::58
+boxybsd1       IN CNAME ns2
 
 ; DN42
 gw-dn42        IN AAAA  2001:bc8:3feb:100::9
@@ -27,6 +33,3 @@ librenms-dn42  IN AAAA  2001:bc8:3feb:100::5
 ; Convenience
 shell          IN AAAA  2001:bc8:3feb:100::10
 
-
-; Delegated VM
-bspdestroyer   IN AAAA  2001:bc8:3feb:100::7
