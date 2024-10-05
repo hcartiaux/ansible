@@ -25,13 +25,21 @@
         - shell
         - init
   tasks:
-    - name: "[DEDIBOX] Set-up bind for Debian"
+    - name: "[DNS] Set-up bind for Debian"
       ansible.builtin.import_role:
         name: bind
       when:
         - ansible_facts['os_family'] | lower == 'debian'
-        - "'dedibox' in group_names"
-      tags: [dedibox, bind]
+        - "('dns' in group_names) or ('dn42_gw' in group_names)"
+      tags: [dns, bind]
+    - name: "[DNS] Set-up NSD for OpenBSD"
+      ansible.builtin.import_role:
+        name: nsd
+      when:
+        - ansible_facts['os_family'] | lower == 'openbsd'
+        - "('dns' in group_names) or ('dn42_gw' in group_names)"
+      tags: [dns, nsd]
+
     - name: "[DEDIBOX] Set-up libvirt for Debian"
       ansible.builtin.import_role:
         name: dedibox_kvm_host
@@ -41,20 +49,6 @@
       tags: [dedibox, kvm]
 
 
-    - name: "[DN42] Set-up NSD for OpenBSD"
-      ansible.builtin.import_role:
-        name: nsd
-      when:
-        - ansible_facts['os_family'] | lower == 'openbsd'
-        - "'dn42_gw' in group_names"
-      tags: [dn42, nsd]
-    - name: "[DN42] Set-up bind for Debian"
-      ansible.builtin.import_role:
-        name: bind
-      when:
-        - ansible_facts['os_family'] | lower == 'debian'
-        - "'dn42_gw' in group_names"
-      tags: [dn42, bind]
     - name: "[DN42] Set-up SNMPD for Debian"
       ansible.builtin.import_role:
         name: snmpd
