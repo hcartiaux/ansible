@@ -1,0 +1,4 @@
+---
+nsd_secondary_zones:
+  - zone_name: nbsdn.fr.eu.org
+    primary_servers: [2001:bc8:3feb:100::1]
