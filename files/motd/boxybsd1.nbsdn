@@ -1,33 +1,14 @@
-
-        ______                ______  ___________
-        | ___ \               | ___ \/  ___|  _  \
-        | |_/ / _____  ___   _| |_/ /\ `--.| | | |
-        | ___ \/ _ \ \/ / | | | ___ \ `--. \ | | |
-        | |_/ / (_) >  <| |_| | |_/ //\__/ / |/ /
-        \____/ \___/_/\_\\__, \____/ \____/|___/
-                          __/ |
-                         |___/
-
-        Welcome to BoxyBSD.com and your personal FreeBSD based VM.
-        It is important to know the ToS and abuse part, which can be
-        found here: https://boxybsd.com/abuse/
-
-        Strongly forbidden:
-          * Illegal or malicious activities
-          * Spamming or sending unsolicited emails.
-          * Hosting or distributing illegal content.
-          * Hosting or distributing copyrighted materials without proper authorization.
-          * Engaging in activities that cause harm to our infrastructure or other users.
-
-        Also forbidden:
-          * Running TOR nodes.
-          * Running Torrent or any filesharing/p2p solution
-
-        Contact:
-          * Web:    https://boxybsd.com
-          * Email:  support@boxybsd.com
-          * Abuse:  abuse@boxybsc.com
-          * Matrix: #BoxyBSD:bsd.cafe [general chat]
-
-        This free service is brought up by gyptazy (https://gyptazy.com).
-
+            _.-|-/\-._              ____                   ____ _____ ____ ___
+         \-'          '-.          / __ )____  _  ____  __/ __ ) ___// __ <  /
+        /    /\    /\    \/       / __  / __ \| |/_/ / / / __  \__ \/ / / / /
+      \/  <    .  >  ./.  \/     / /_/ / /_/ />  </ /_/ / /_/ /__/ / /_/ / /
+  _   /  <         > /___\ |.   /_____/\____/_/|_|\__, /_____/____/_____/_/
+.< \ /  <     /\    > ( #) |#)                      /____/
+  | |    <       /\   -.   __\
+   \   <  <   V      > )./_._(\      boxybsd1.nbsdn.fr.eu.org
+  .)/\   <  <  .-     /  \_'_) )-..  ------------------------
+      \  <   ./  /  > >       /._./  OS: OpenBSD 7.5
+      /\   <  '-' >    >    /        CPU: 1 vCPU (AMD Ryzen 9 5950X)
+        '-._ < v    >   _.-'         Memory: 1GB
+          / '-.______.-' \           hosted-vm58.boxybsd.com
+                 \/
