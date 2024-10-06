@@ -11,7 +11,7 @@
  `$$b      "-.__            OS: Debian GNU/Linux 12 (bookworm) x86_64
   `Y$$                      Kernel: 6.1.0-21-amd64
    `Y$$.                    CPU: QEMU Virtual CPU version 2.5+
-     `$$b.                  Memory: 384MiB
+     `$$b.                  Memory: 1024MiB
        `Y$$b.
           `"Y$b._
               `"""
