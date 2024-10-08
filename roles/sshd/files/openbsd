@@ -23,7 +23,7 @@ AuthorizedKeysFile .ssh/authorized_keys
 KbdInteractiveAuthentication no
 
 X11Forwarding yes
-PrintMotd no
+PrintMotd yes
 
 # override default of no subsystems
 Subsystem	sftp	/usr/libexec/sftp-server -f AUTH -l INFO
