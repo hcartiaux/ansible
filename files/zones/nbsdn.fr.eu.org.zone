@@ -15,7 +15,7 @@ $TTL     300
 @              IN NS    ns2.nbsdn.fr.eu.org.
 
 @              IN AAAA  2001:bc8:3feb:100::1
-@              IN A     51.15.171.197
+@              IN A     51.158.153.183
 
 ns1            IN AAAA  2001:bc8:3feb:100::1
 srv            IN CNAME nbsdn.fr.eu.org.
@@ -25,9 +25,9 @@ boxybsd1       IN CNAME ns2
 
 ; DN42
 gw-dn42        IN AAAA  2001:bc8:3feb:100::9
-gw-dn42        IN A     51.15.171.197
+gw-dn42        IN A     51.158.153.183
 gw2-dn42       IN AAAA  2001:bc8:3feb:100::6
-gw2-dn42       IN A     51.15.171.197
+gw2-dn42       IN A     51.158.153.183
 librenms-dn42  IN AAAA  2001:bc8:3feb:100::5
 
 ; Convenience
