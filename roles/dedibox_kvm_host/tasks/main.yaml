@@ -53,6 +53,13 @@
 ###
 # Network configuration
 ###
+- name: Install networking packages
+  ansible.builtin.package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ network_packages }}"
+
 
 - name: Dhclient6 configuration
   ansible.builtin.template:
@@ -97,7 +104,6 @@
     state: present
   with_items:
     - "{{ virt_packages }}"
-    - "{{ network_packages }}"
 
 - name: Apparmor configuration
   ansible.builtin.template:
