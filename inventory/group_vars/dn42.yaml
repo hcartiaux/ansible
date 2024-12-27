@@ -28,5 +28,5 @@ bind_validate_except:
   - d.f.ip6.arpa
 
 snmpd_com2sec: dn42
-snmpd_syslocation: Rack D25, Room 1 1, Block E, Position 1, Server 4, fr-par2 - DC5, Paris, France
+snmpd_syslocation: Rack 6.12.60, Room Hall 6 12, Block P, Position 2 - AMS1, Amsterdam, Netherlands
 snmpd_syscontact: Hyacinthe Cartiaux <hyacinthe.cartiaux@gmail.com>
