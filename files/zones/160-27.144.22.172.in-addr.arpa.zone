@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Sat 2024-07-06 14:27:17 hcartiaux>
+; Time-stamp: <Wed 2025-01-01 11:31:55 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  160/27.144.22.172.in-addr.arpa.
 $TTL     300
 @        3600  IN SOA   ns1.hcartiaux.dn42. hostmaster.hcartiaux.dn42. (
-                        2024070600 ; Serial
+                        2025010100 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire

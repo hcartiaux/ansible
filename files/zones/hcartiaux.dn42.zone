@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Fri 2024-06-21 22:31:43 hcartiaux>
+; Time-stamp: <Wed 2025-01-01 11:32:07 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  hcartiaux.dn42.
 $TTL     300
 @        3600  IN SOA   ns1.hcartiaux.dn42. hostmaster.hcartiaux.dn42. (
-                        2024062100 ; Serial
+                        2025010100 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire

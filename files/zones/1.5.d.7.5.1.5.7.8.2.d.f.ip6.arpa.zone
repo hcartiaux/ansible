@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Sat 2024-07-06 14:28:06 hcartiaux>
+; Time-stamp: <Wed 2025-01-01 11:31:42 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  1.5.d.7.5.1.5.7.8.2.d.f.ip6.arpa.
 $TTL     300
 @        3600  IN SOA   ns1.hcartiaux.dn42. hostmaster.hcartiaux.dn42. (
-                        2024070600 ; Serial
+                        2024010100 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
