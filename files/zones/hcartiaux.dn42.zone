@@ -19,6 +19,3 @@ ns1            IN AAAA  fd28:7515:7d51:a::1
 ns1            IN A     172.22.144.161
 ns2            IN AAAA  fd28:7515:7d51:c::1
 ns2            IN A     172.22.144.177
-
-librenms       IN AAAA  fd28:7515:7d51:d::2
-librenms       IN A     172.22.144.186

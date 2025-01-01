@@ -16,5 +16,3 @@ $TTL     300
 161            IN PTR   ns1.hcartiaux.dn42.
 177            IN PTR   ns2.hcartiaux.dn42.
 
-186            IN PTR   librenms.hcartiaux.dn42.
-

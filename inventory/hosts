@@ -17,7 +17,6 @@ gw-dn42.nbsdn
 gw2-dn42.nbsdn
 
 [dn42_servers]
-librenms-dn42.nbsdn
 
 [dn42:children]
 dn42_gw

@@ -16,5 +16,3 @@ $TTL     300
 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.a.0.0.0 IN PTR ns1.hcartiaux.dn42.
 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.c.0.0.0 IN PTR ns2.hcartiaux.dn42.
 
-2.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.0.0.0 IN PTR librenms.hcartiaux.dn42.
-
