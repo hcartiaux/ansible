@@ -1,0 +1,24 @@
+; -*-  mode: dns; -*-
+; Time-stamp: <Thu 2025-01-02 09:49:45 hcartiaux>
+; --------------------------------------------------------------------------
+$ORIGIN  flap.net.eu.org.
+$TTL     300
+@        3600  IN SOA   ns1.flap.net.eu.org. hostmaster.flap.net.eu.org. (
+                        2025010200 ; Serial
+                        10800      ; Refresh
+                        3600       ; Retry
+                        604800     ; Expire
+                        300 )      ; Negative Cache TTL
+
+; flap.net infrastructure
+@              IN NS    ns1.flap.net.eu.org.
+@              IN NS    ns2.flap.net.eu.org.
+
+@              IN AAAA  2001:bc8:3feb:100::9
+
+ns1            IN AAAA  2001:bc8:3feb:100::1
+ns2            IN AAAA  2a13:e3c1:400e:1337::58
+
+; DN42
+dn42-nl-ams1   IN AAAA  2001:bc8:3feb:100::9
+dn42-de-fra1   IN AAAA  2a13:e3c1:400e:1337::58
