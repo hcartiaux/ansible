@@ -3,7 +3,7 @@
 ; --------------------------------------------------------------------------
 $ORIGIN  hcartiaux.dn42.
 $TTL     300
-@        3600  IN SOA   ns1.hcartiaux.dn42. hostmaster.hcartiaux.dn42. (
+@        3600  IN SOA   ns1.hcartiaux.dn42. hyacinthe.cartiaux.gmail.com. (
                         2025010100 ; Serial
                         10800      ; Refresh
                         3600       ; Retry

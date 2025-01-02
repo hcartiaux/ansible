@@ -3,7 +3,7 @@
 ; --------------------------------------------------------------------------
 $ORIGIN  flap.net.eu.org.
 $TTL     300
-@        3600  IN SOA   ns1.flap.net.eu.org. hostmaster.flap.net.eu.org. (
+@        3600  IN SOA   ns1.flap.net.eu.org. hyacinthe.cartiaux.gmail.com. (
                         2025010200 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
