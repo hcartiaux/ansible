@@ -38,7 +38,30 @@
   ansible.builtin.service:
     name: "{{ bird_service }}"
     enabled: true
-#
+
+- name: Link the ROA script
+  ansible.builtin.file:
+    state: link
+    src: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/roa/dn42-roa-update.sh"
+    dest: "/usr/local/bin/dn42-roa-update.sh"
+
+- name: Link the ROA service
+  ansible.builtin.file:
+    state: link
+    src: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/roa/dn42-roa.service"
+    dest: "/etc/systemd/system/dn42-roa.service"
+
+- name: Link the ROA timer
+  ansible.builtin.file:
+    state: link
+    src: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/roa/dn42-roa.timer"
+    dest: "/etc/systemd/system/dn42-roa.timer"
+
+- name: Enable service bird
+  ansible.builtin.service:
+    name: "dn42-roa.timer"
+    enabled: true
+
 # - name: Move the default wireguard configuration
 #   command: mv /etc/wireguard /etc/wireguard.bkp
 #   args:
