@@ -1,0 +1,13 @@
+# Distro specific variables for Debian
+---
+bird_packages:
+  - bird2
+
+bird_service: bird
+
+# Configuration directory
+bird_config_directory: /etc/bird
+
+bird_owner: bird
+bird_group: bird
+

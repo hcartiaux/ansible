@@ -1,0 +1,46 @@
+---
+- name: Set OS-specific variables
+  ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
+- name: Install bird packages
+  ansible.builtin.package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ bird_packages }}"
+
+- name: Move the default bird configuration
+  command: "mv {{ bird_config_directory }} {{ bird_config_directory }}.bkp"
+  args:
+    creates: "{{ bird_config_directory }}.bkp"
+
+- name: Checkout the config repository
+  ansible.builtin.git:
+    repo: "{{ dn42_config_repository }}"
+    dest: "{{ dn42_config_directory }}"
+
+- name: Set permissions recursively on the bird directory
+  ansible.builtin.file:
+    state: directory
+    path: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/bird"
+    owner: "{{ bird_owner }}"
+    group: "{{ bird_group }}"
+    recurse: yes
+
+- name: Link the bird configuration directory
+  ansible.builtin.file:
+    state: link
+    src: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/bird"
+    dest: "{{ bird_config_directory }}"
+    owner: "{{ bird_owner }}"
+    group: "{{ bird_group }}"
+
+- name: Enable service bird
+  ansible.builtin.service:
+    name: "{{ bird_service }}"
+    enabled: true
+#
+# - name: Move the default wireguard configuration
+#   command: mv /etc/wireguard /etc/wireguard.bkp
+#   args:
+#     creates: /etc/wireguard.bkp
+#
