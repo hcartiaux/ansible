@@ -1,3 +1,20 @@
 ---
 dn42_config_repository: "git@github.com:hcartiaux/dn42-as4242420263.git"
 dn42_config_directory: "/etc/dn42-as4242420263"
+
+dn42_ownas: "4242420263"
+dn42_ownip: "172.22.144.161"
+dn42_ownnet: "172.22.144.160/27"
+dn42_ownnetset: "[172.22.144.160/27+]"
+
+dn42_ownnet_v6: "fd28:7515:7d51::/48"
+dn42_ownipv6: "fd28:7515:7d51:a::1"
+dn42_ownnetset_v6: "[fd28:7515:7d51::/48+]"
+
+dn42_bandwidth: "24" # >= 100Mbps
+dn42_linktype: "34" # encrypted with safe vpn solution with PFS (Perfect Forward Secrecy)
+dn42_region: "41" # Europe
+dn42_country: "1250" # France
+
+dn42_wireguard_privatekey: "CHANGEME"
+dn42_wireguard_publickey: "CHANGEME"

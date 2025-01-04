@@ -1,5 +1,15 @@
 # Distro specific variables for Debian
 ---
+###
+# Common
+###
+
+systemd_directory: /etc/systemd/system
+local_bin_directory: /usr/local/bin
+
+###
+# Bird
+###
 bird_packages:
   - bird2
 
@@ -10,4 +20,29 @@ bird_config_directory: /etc/bird
 
 bird_owner: bird
 bird_group: bird
+
+###
+# Sysctl
+###
+
+sysctl_config_directory: /etc/sysctl.d
+
+sysctl_owner: root
+sysctl_group: root
+
+
+###
+# Wireguard
+###
+
+wireguard_packages:
+  - wireguard
+  - wireguard-tools
+
+wireguard_config_directory: /etc/wireguard
+wireguard_privatekey_file: /etc/wireguard/privatekey
+wireguard_publickey_file: /etc/wireguard/publickey
+
+wireguard_owner: root
+wireguard_group: root
 

@@ -1,0 +1,39 @@
+---
+###
+# Wireguard install
+###
+
+- name: Install wireguard packages
+  ansible.builtin.package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ wireguard_packages }}"
+
+###
+# Wireguard config
+###
+
+- name: Create a new bird configuration directory
+  ansible.builtin.file:
+    state: directory
+    path: "{{ wireguard_config_directory }}"
+    mode: "0755"
+    owner: "{{ wireguard_owner }}"
+    group: "{{ wireguard_group }}"
+
+- name: Write the private key
+  ansible.builtin.copy:
+    content: "{{ dn42_wireguard_privatekey }}"
+    dest: "{{ wireguard_privatekey_file }}"
+    mode: "0600"
+    owner: "root"
+    group: "root"
+
+- name: Write the public key
+  ansible.builtin.copy:
+    content: "{{ dn42_wireguard_publickey }}"
+    dest: "{{ wireguard_publickey_file }}"
+    mode: "0600"
+    owner: "root"
+    group: "root"

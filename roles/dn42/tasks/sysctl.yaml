@@ -1,0 +1,36 @@
+---
+###
+# Sysctl config
+###
+
+- name: Check if the ipv4 file exist
+  ansible.builtin.stat:
+    path: "{{ sysctl_config_directory }}/ipv4.conf"
+  register: sysctl_ipv4
+- name: Create the symbolic link ipv4.conf and trigger a command
+  block:
+    - name: Link the ipv4 sysctl file
+      ansible.builtin.file:
+        state: link
+        src: "{{ dn42_config_directory }}/common/sysctl.d/ipv4.conf"
+        dest: "{{ sysctl_config_directory }}/ipv4.conf"
+      when: not sysctl_ipv4.stat.exists
+    - name: Run a command if the link is created
+      ansible.builtin.command: "sysctl -p {{ sysctl_config_directory }}/ipv4.conf"
+      when: not sysctl_ipv4.stat.exists
+
+- name: Check if the ipv6 file exist
+  ansible.builtin.stat:
+    path: "{{ sysctl_config_directory }}/ipv6.conf"
+  register: sysctl_ipv6
+- name: Create the symbolic link ipv6.conf and trigger a command
+  block:
+    - name: Link the ipv6 sysctl file
+      ansible.builtin.file:
+        state: link
+        src: "{{ dn42_config_directory }}/common/sysctl.d/ipv6.conf"
+        dest: "{{ sysctl_config_directory }}/ipv6.conf"
+      when: not sysctl_ipv6.stat.exists
+    - name: Run a command if the link is created
+      ansible.builtin.command: "sysctl -p {{ sysctl_config_directory }}/ipv6.conf"
+      when: not sysctl_ipv6.stat.exists

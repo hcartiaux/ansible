@@ -1,69 +1,35 @@
 ---
 - name: Set OS-specific variables
   ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
-- name: Install bird packages
-  ansible.builtin.package:
-    pkg: "{{ item }}"
+
+###
+# Preparation
+###
+
+- name: Create the root ssh directory
+  ansible.builtin.file:
+    state: directory
+    path: "/root/.ssh"
+
+- name: Ensure github.com is a known host
+  ansible.builtin.lineinfile:
+    dest: /root/.ssh/known_hosts
+    create: true
     state: present
-  with_items:
-    - "{{ bird_packages }}"
+    line: "{{ lookup('pipe', 'ssh-keyscan -q -t rsa github.com') }}"
+    regexp: "^github\\.com"
 
-- name: Move the default bird configuration
-  command: "mv {{ bird_config_directory }} {{ bird_config_directory }}.bkp"
-  args:
-    creates: "{{ bird_config_directory }}.bkp"
-
-- name: Checkout the config repository
+- name: Checkout the configuration repository
   ansible.builtin.git:
     repo: "{{ dn42_config_repository }}"
     dest: "{{ dn42_config_directory }}"
 
-- name: Set permissions recursively on the bird directory
-  ansible.builtin.file:
-    state: directory
-    path: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/bird"
-    owner: "{{ bird_owner }}"
-    group: "{{ bird_group }}"
-    recurse: yes
-
-- name: Link the bird configuration directory
-  ansible.builtin.file:
-    state: link
-    src: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/bird"
-    dest: "{{ bird_config_directory }}"
-    owner: "{{ bird_owner }}"
-    group: "{{ bird_group }}"
-
-- name: Enable service bird
-  ansible.builtin.service:
-    name: "{{ bird_service }}"
-    enabled: true
-
-- name: Link the ROA script
-  ansible.builtin.file:
-    state: link
-    src: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/roa/dn42-roa-update.sh"
-    dest: "/usr/local/bin/dn42-roa-update.sh"
-
-- name: Link the ROA service
-  ansible.builtin.file:
-    state: link
-    src: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/roa/dn42-roa.service"
-    dest: "/etc/systemd/system/dn42-roa.service"
-
-- name: Link the ROA timer
-  ansible.builtin.file:
-    state: link
-    src: "{{ dn42_config_directory }}/{{ inventory_hostname_short }}/roa/dn42-roa.timer"
-    dest: "/etc/systemd/system/dn42-roa.timer"
-
-- name: Enable service bird
-  ansible.builtin.service:
-    name: "dn42-roa.timer"
-    enabled: true
-
-# - name: Move the default wireguard configuration
-#   command: mv /etc/wireguard /etc/wireguard.bkp
-#   args:
-#     creates: /etc/wireguard.bkp
-#
+- name: Sysctl configuration
+  ansible.builtin.import_tasks:
+    file: sysctl.yaml
+- name: Bird installation and configuration
+  ansible.builtin.import_tasks:
+    file: bird.yaml
+- name: Wireguard installation and configuration
+  ansible.builtin.import_tasks:
+    file: wireguard.yaml

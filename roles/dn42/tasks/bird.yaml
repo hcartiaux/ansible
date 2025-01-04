@@ -1,0 +1,106 @@
+---
+###
+# Bird install
+###
+
+- name: Install bird packages
+  ansible.builtin.package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ bird_packages }}"
+
+###
+# Bird config
+###
+
+- name: Move the default bird configuration directory
+  ansible.builtin.command: "mv {{ bird_config_directory }} {{ bird_config_directory }}.bkp"
+  args:
+    creates: "{{ bird_config_directory }}.bkp"
+
+- name: Create a new bird configuration directory
+  ansible.builtin.file:
+    state: directory
+    path: "{{ item }}"
+    mode: "0755"
+    owner: "{{ bird_owner }}"
+    group: "{{ bird_group }}"
+  with_items:
+    - "{{ bird_config_directory }}"
+    - "{{ bird_config_directory }}/roa"
+    - "{{ bird_config_directory }}/bgp_peers"
+
+- name: Set permissions recursively on the server bird directory
+  ansible.builtin.file:
+    state: directory
+    path: "{{ dn42_config_directory }}/servers/{{ inventory_hostname_short }}/bird"
+    owner: "{{ bird_owner }}"
+    group: "{{ bird_group }}"
+    recurse: true
+
+- name: Set permissions recursively on the common bird directory
+  ansible.builtin.file:
+    state: directory
+    path: "{{ dn42_config_directory }}/servers/{{ inventory_hostname_short }}/bird"
+    owner: "{{ bird_owner }}"
+    group: "{{ bird_group }}"
+    recurse: true
+
+- name: Link the bird configuration directory
+  ansible.builtin.file:
+    state: link
+    src: "{{ dn42_config_directory }}/common/bird/{{ item }}"
+    dest: "{{ bird_config_directory }}/{{ item }}"
+    owner: "{{ bird_owner }}"
+    group: "{{ bird_group }}"
+  with_items:
+    - bgp_community_filters.conf
+    - bird.conf
+    - roa.conf
+    - utilities.conf
+    - envvars
+
+- name: Create bird custom configuration file
+  ansible.builtin.template:
+    src: variables.j2
+    dest: "{{ bird_config_directory }}/variables.conf"
+    mode: "0644"
+    owner: "{{ bird_owner }}"
+    group: "{{ bird_group }}"
+  notify:
+    - Reload bird
+
+- name: Enable service bird
+  ansible.builtin.service:
+    name: "{{ bird_service }}"
+    state: started
+    enabled: true
+
+###
+# ROA config
+###
+
+- name: Link the ROA script
+  ansible.builtin.file:
+    state: link
+    src: "{{ dn42_config_directory }}/common/roa/dn42-roa-update.sh"
+    dest: "{{ local_bin_directory }}/dn42-roa-update.sh"
+
+- name: Link the ROA service
+  ansible.builtin.file:
+    state: link
+    src: "{{ dn42_config_directory }}/common/roa/dn42-roa.service"
+    dest: "{{ systemd_directory }}/dn42-roa.service"
+
+- name: Link the ROA timer
+  ansible.builtin.file:
+    state: link
+    src: "{{ dn42_config_directory }}/common/roa/dn42-roa.timer"
+    dest: "{{ systemd_directory }}/dn42-roa.timer"
+
+- name: Enable the ROA timer
+  ansible.builtin.service:
+    name: "dn42-roa.timer"
+    state: started
+    enabled: true
