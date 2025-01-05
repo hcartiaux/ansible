@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Wed 2025-01-01 11:32:19 hcartiaux>
+; Time-stamp: <Sun 2025-01-05 15:23:07 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  nbsdn.fr.eu.org.
 $TTL     300
 @        3600  IN SOA   ns1.nbsdn.fr.eu.org. hyacinthe.cartiaux.gmail.com. (
-                        2025010100 ; Serial
+                        2025010500 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -28,8 +28,9 @@ dn42-nl-ams1   IN AAAA  2001:bc8:3feb:100::9
 dn42-nl-ams1   IN A     51.158.153.183
 gw-dn42        IN CNAME dn42-nl-ams1.nbsdn.fr.eu.org.
 
-gw2-dn42       IN AAAA  2001:bc8:3feb:100::6
-gw2-dn42       IN A     51.158.153.183
+dn42-nl-ams1   IN AAAA  2001:bc8:3feb:100::6
+dn42-nl-ams1   IN A     51.158.153.183
+gw2-dn42       IN CNAME dn42-nl-ams2.nbsdn.fr.eu.org.
 
 ; Convenience
 shell          IN AAAA  2001:bc8:3feb:100::10
