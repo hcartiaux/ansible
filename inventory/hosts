@@ -14,6 +14,7 @@ shell.nbsdn    ansible_become_method=doas
 # DN42 Infra - AS4242420263
 [dn42_gw]
 dn42-nl-ams1.nbsdn
+dn42-nl-ams2.nbsdn
 
 [dn42_servers]
 
