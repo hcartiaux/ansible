@@ -53,7 +53,7 @@
         name: dn42
       when:
         - ansible_facts['os_family'] | lower in ['debian', 'openbsd']
-        - "'dn42' in group_names"
+        - "'dn42_gw' in group_names"
       tags: [dn42]
 
 #    - name: "[DN42] Set-up SNMPD for Debian"

@@ -17,8 +17,8 @@ dn42-nl-ams1.nbsdn
 dn42-nl-ams2.nbsdn
 
 [dn42_servers]
+flipflapix.nbsdn
 
 [dn42:children]
 dn42_gw
 dn42_servers
-
