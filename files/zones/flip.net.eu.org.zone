@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Thu 2025-01-02 09:49:08 hcartiaux>
+; Time-stamp: <Mon 2025-01-13 18:10:14 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  flip.net.eu.org.
 $TTL     300
 @        3600  IN SOA   ns1.flip.net.eu.org. hyacinthe.cartiaux.gmail.com. (
-                        2025010100 ; Serial
+                        2025011300 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -27,7 +27,9 @@ ns2            IN AAAA  2a13:e3c1:400e:1337::58
 srv            IN CNAME ns1
 
 ; Dedibox VMs
+ix             IN AAAA  2001:bc8:3feb:100::8
 dn42-nl-ams1   IN AAAA  2001:bc8:3feb:100::9
+dn42-nl-ams2   IN AAAA  2001:bc8:3feb:100::6
 shell          IN AAAA  2001:bc8:3feb:100::10
 
 ; VPS
