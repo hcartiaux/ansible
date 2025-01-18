@@ -1,0 +1,10 @@
+---
+- name: Reload headscale
+  ansible.builtin.service:
+    name: "{{ headscale_service }}"
+    state: reloaded
+
+- name: Restart headscale
+  ansible.builtin.service:
+    name: "{{ headscale_service }}"
+    state: restarted

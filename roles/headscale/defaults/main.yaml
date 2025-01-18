@@ -1,0 +1,4 @@
+---
+headscale_arch: "amd64"
+headscale_version: "0.24.0"
+headscale_checksum: "sha256:d1ccb10dcfe16f7a0972e8e8a12806aaae4a6e339e661d837a2b628a72d5f25d"

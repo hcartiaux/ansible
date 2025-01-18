@@ -1,0 +1,9 @@
+# Distro specific variables for Debian
+---
+headscale_service: headscale
+
+# Directory with run-time stuff
+headscale_conf_file: /etc/headscale/config.yaml
+
+headscale_owner: headscale
+headscale_group: headscale
