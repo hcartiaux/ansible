@@ -2,6 +2,8 @@
 bind_primary_zones:
   - zone_name: nbsdn.fr.eu.org
     secondary_servers: [2a13:e3c1:400e:1337::58]
+  - zone_name: flap42.eu
+    secondary_servers: [2a13:e3c1:400e:1337::58]
   - zone_name: flip.net.eu.org
     secondary_servers: [2a13:e3c1:400e:1337::58]
   - zone_name: flap.net.eu.org
