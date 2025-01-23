@@ -60,7 +60,7 @@
         name: headscale
       when:
         - ansible_facts['os_family'] | lower in ['debian']
-        - inventory_hostname == "flipflapix.nbsdn"
+        - inventory_hostname == "flip.flap"
       tags: [dn42]
 
 
