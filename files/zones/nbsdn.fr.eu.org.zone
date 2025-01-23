@@ -1,40 +1,38 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Mon 2025-01-13 18:02:24 hcartiaux>
+; Time-stamp: <Thu 2025-01-23 21:50:16 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  nbsdn.fr.eu.org.
 $TTL     300
-@        3600  IN SOA   ns1.nbsdn.fr.eu.org. hyacinthe.cartiaux.gmail.com. (
-                        2025011300 ; Serial
+@        3600  IN SOA   ns1.flap42.eu. hyacinthe.cartiaux.gmail.com. (
+                        2025012300 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
                         300 )      ; Negative Cache TTL
 
-; NBSDN infrastructure
-@              IN NS    ns1.nbsdn.fr.eu.org.
-@              IN NS    ns2.nbsdn.fr.eu.org.
+; Legacy NBSDN infrastructure
+; This zone is kept for historical reasons
+@              IN NS    ns1.flap42.eu.
+@              IN NS    ns2.flap42.eu.
 
 @              IN AAAA  2001:bc8:3feb:100::1
 @              IN A     51.158.153.183
 
-ns1            IN AAAA  2001:bc8:3feb:100::1
-srv            IN CNAME nbsdn.fr.eu.org.
+ns1            IN CNAME ns1.flap42.eu.
+srv            IN CNAME srv.flap42.eu.
 
-ns2            IN AAAA  2a13:e3c1:400e:1337::58
+ns2            IN CNAME  boxybsd1.flap42.eu.
 boxybsd1       IN CNAME ns2
 
 ; DN42
-flipflapix     IN AAAA  2001:bc8:3feb:100::8
-flipflapix     IN A     51.158.153.183
+flipflapix     IN CNAME flip.flap42.eu.
 
-dn42-nl-ams1   IN AAAA  2001:bc8:3feb:100::9
-dn42-nl-ams1   IN A     51.158.153.183
-gw-dn42        IN CNAME dn42-nl-ams1.nbsdn.fr.eu.org.
+dn42-nl-ams1   IN CNAME nl-ams1.flap42.eu.
+gw-dn42        IN CNAME nl-ams1.flap42.eu.
 
-dn42-nl-ams2   IN AAAA  2001:bc8:3feb:100::6
-dn42-nl-ams2   IN A     51.158.153.183
-gw2-dn42       IN CNAME dn42-nl-ams2.nbsdn.fr.eu.org.
+dn42-nl-ams2   IN CNAME nl-ams2.flap42.eu.
+gw2-dn42       IN CNAME nl-ams2.flap42.eu.
 
 ; Convenience
-shell          IN AAAA  2001:bc8:3feb:100::10
+shell          IN CNAME shell.flap42.eu.
 

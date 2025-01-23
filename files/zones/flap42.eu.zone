@@ -1,26 +1,44 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Sat 2025-01-18 16:43:39 hcartiaux>
+; Time-stamp: <Thu 2025-01-23 23:31:25 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  flap42.eu.
 $TTL     300
 @        3600  IN SOA   ns1.flap42.eu. hyacinthe.cartiaux.gmail.com. (
-                        2025011800 ; Serial
+                        2025012300 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
                         300 )      ; Negative Cache TTL
 
-; flap.net infrastructure
+; flap42.eu infrastructure
 @              IN NS    ns1.flap42.eu.
 @              IN NS    ns2.flap42.eu.
 
-@              IN AAAA  2001:bc8:3feb:100::9
+@              IN AAAA  2001:bc8:3feb:100::1
+@              IN A     51.158.153.183
 
 ns1            IN AAAA  2001:bc8:3feb:100::1
+ns1            IN A     51.158.153.183
 ns2            IN AAAA  2a13:e3c1:400e:1337::58
 
-; DN42
-ix             IN AAAA  2001:bc8:3feb:100::8
-dn42-nl-ams1   IN AAAA  2001:bc8:3feb:100::9
-dn42-nl-ams2   IN AAAA  2001:bc8:3feb:100::6
-dn42-de-fra1   IN AAAA  2a13:e3c1:400e:1337::58
+;-----------
+; clear net
+;-----------
+; boxybsd VPS
+boxybsd1       IN CNAME ns2
+
+; dedibox virtualization server
+srv            IN CNAME ns1
+
+; dedibox guests
+shell          IN AAAA  2001:bc8:3feb:100::10
+
+;-----------
+; dn42
+;-----------
+flip           IN AAAA  2001:bc8:3feb:100::8
+
+nl-ams1        IN AAAA  2001:bc8:3feb:100::9
+nl-ams1        IN A     51.158.153.183
+
+nl-ams2        IN AAAA  2001:bc8:3feb:100::6
