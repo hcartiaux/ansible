@@ -20,6 +20,10 @@ dedibox_kvm_host_ipv4_port_mapping:
     destination_ip: 192.168.0.1
     destination_port: 222
     protocol: tcp
+  - source_port: 8080
+    destination_ip: 192.168.0.8
+    destination_port: 8080
+    protocol: tcp
   - source_port: 51820
     destination_ip: 192.168.0.9
     destination_port: 51820
