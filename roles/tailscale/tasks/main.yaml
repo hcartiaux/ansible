@@ -1,0 +1,26 @@
+---
+- name: Set OS-specific variables
+  ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
+
+- name: download the tailscale repo key
+  ansible.builtin.get_url:
+    url: "https://pkgs.tailscale.com/stable/{{ ansible_os_family | lower }}/{{ ansible_distribution_release }}.noarmor.gpg"
+    dest: "/usr/share/keyrings/tailscale-archive-keyring.gpg"
+    mode: "0644"
+
+- name: download the tailscale repo file
+  ansible.builtin.get_url:
+    url: "https://pkgs.tailscale.com/stable/{{ ansible_os_family | lower }}/{{ ansible_distribution_release }}.tailscale-keyring.list"
+    dest: "/etc/apt/sources.list.d/tailscale.list"
+    mode: "0644"
+
+- name: Install tailscale package
+  ansible.builtin.package:
+    pkg: "{{ tailscale_package_name }}"
+    state: present
+    update_cache: yes
+
+- name: Enable service tailscaled
+  ansible.builtin.service:
+    name: "{{ tailscale_service }}"
+    enabled: true

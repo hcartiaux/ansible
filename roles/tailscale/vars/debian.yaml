@@ -1,0 +1,4 @@
+# Distro specific variables for Debian
+---
+tailscale_service: "tailscaled"
+tailscale_package_name: "tailscale"
