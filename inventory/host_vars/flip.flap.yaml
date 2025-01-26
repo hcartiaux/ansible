@@ -4,6 +4,7 @@ headscale_hostname: "flip.flap42.eu"
 headscale_listen_addr: "0.0.0.0"
 headscale_port: 8080
 headscale_derp_enabled: "false"
-headscale_magicdns_enabled: "false"
+headscale_magicdns_enabled: "true"
 headscale_v4_prefix: "100.64.0.0/10"
 headscale_v6_prefix: "fd28:7515:7d51:42::/64"
+headscale_nameservers: ['192.168.0.9']
