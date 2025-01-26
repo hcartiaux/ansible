@@ -10,13 +10,13 @@
 #
 # https://myheadscale.example.com:443
 #
-server_url: http://127.0.0.1:8080
+server_url: {{headscale_url}}
 
 # Address to listen to / bind to on the server
 #
 # For production:
 # listen_addr: 0.0.0.0:8080
-listen_addr: 127.0.0.1:8080
+listen_addr: {{ headscale_listen_addr }}:{{ headscale_port }}
 
 # Address to listen to /metrics, you may want
 # to keep this endpoint private to your internal
@@ -58,8 +58,8 @@ noise:
 # IPv4: https://github.com/tailscale/tailscale/blob/22ebb25e833264f58d7c3f534a8b166894a89536/net/tsaddr/tsaddr.go#L33
 # Any other range is NOT supported, and it will cause unexpected issues.
 prefixes:
-  v4: 100.64.0.0/10
-  v6: fd7a:115c:a1e0::/48
+  v4: {{ headscale_v4_prefix }}
+  v6: {{ headscale_v6_prefix }}
 
   # Strategy used for allocation of IPs to nodes, available options:
   # - sequential (default): assigns the next free IP from the previous given IP.
@@ -76,7 +76,7 @@ derp:
   server:
     # If enabled, runs the embedded DERP server and merges it into the rest of the DERP config
     # The Headscale server_url defined above MUST be using https, DERP requires TLS to be in place
-    enabled: false
+    enabled: {{ headscale_derp_enabled }}
 
     # Region ID to use for the embedded DERP server.
     # The local DERP prevails if the region ID collides with other region ID coming from
@@ -205,7 +205,7 @@ acme_url: https://acme-v02.api.letsencrypt.org/directory
 acme_email: ""
 
 # Domain name to request a TLS certificate for:
-tls_letsencrypt_hostname: ""
+tls_letsencrypt_hostname: "{{ headscale_hostname }}"
 
 # Path to store certificates and metadata needed by
 # letsencrypt
@@ -265,14 +265,14 @@ policy:
 # all the fields under `dns` should be set to empty values.
 dns:
   # Whether to use [MagicDNS](https://tailscale.com/kb/1081/magicdns/).
-  magic_dns: true
+  magic_dns: {{ headscale_magicdns_enabled }}
 
   # Defines the base domain to create the hostnames for MagicDNS.
   # This domain _must_ be different from the server_url domain.
   # `base_domain` must be a FQDN, without the trailing dot.
   # The FQDN of the hosts will be
   # `hostname.base_domain` (e.g., _myhost.example.com_).
-  base_domain: example.com
+  base_domain: {{ headscale_hostname }}
 
   # List of DNS servers to expose to clients.
   nameservers:

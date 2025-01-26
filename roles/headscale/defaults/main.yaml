@@ -2,3 +2,12 @@
 headscale_arch: "amd64"
 headscale_version: "0.24.1"
 headscale_checksum: "sha256:3f2669271e806f20461123bf837b9a484d04ab0bea590c6b7a359f55f4b5402a"
+
+headscale_url: "http://127.0.0.1:8080"
+headscale_hostname: "example.com"
+headscale_listen_addr: "127.0.0.1"
+headscale_port: 8080
+headscale_derp_enabled: "false"
+headscale_magicdns_enabled: "false"
+headscale_v4_prefix: "100.64.0.0/10"
+headscale_v6_prefix: "fd7a:115c:a1e0::/48"
