@@ -55,21 +55,6 @@
         - ansible_facts['os_family'] | lower in ['debian', 'openbsd']
         - "'dn42_gw' in group_names"
       tags: [dn42]
-    - name: "[DN42] Set-up headscale on flipflapix"
-      ansible.builtin.import_role:
-        name: headscale
-      when:
-        - ansible_facts['os_family'] | lower in ['debian']
-        - inventory_hostname == "flip.flap"
-      tags: [dn42]
-    - name: "[DN42] Set-up tailscale client on dn42 routers"
-      ansible.builtin.import_role:
-        name: tailscale
-      when:
-        - ansible_facts['os_family'] | lower in ['debian']
-        - "'dn42_gw' in group_names"
-      tags: [dn42]
-
 
 #    - name: "[DN42] Set-up SNMPD for Debian"
 #      ansible.builtin.import_role:
