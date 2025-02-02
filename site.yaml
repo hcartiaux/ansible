@@ -55,10 +55,3 @@
         - ansible_facts['os_family'] | lower in ['debian', 'openbsd']
         - "'dn42_gw' in group_names"
       tags: [dn42]
-
-#    - name: "[DN42] Set-up SNMPD for Debian"
-#      ansible.builtin.import_role:
-#        name: snmpd
-#      when:
-#        - ansible_facts['os_family'] | lower == 'debian'
-#        - "'dn42' in group_names"
