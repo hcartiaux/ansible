@@ -21,12 +21,10 @@ $TTL     300
 ns1            IN CNAME ns1.flap42.eu.
 srv            IN CNAME srv.flap42.eu.
 
-ns2            IN CNAME  boxybsd1.flap42.eu.
+ns2            IN CNAME boxybsd1.flap42.eu.
 boxybsd1       IN CNAME ns2
 
 ; DN42
-flipflapix     IN CNAME flip.flap42.eu.
-
 dn42-nl-ams1   IN CNAME nl-ams1.flap42.eu.
 gw-dn42        IN CNAME nl-ams1.flap42.eu.
 

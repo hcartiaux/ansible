@@ -36,8 +36,6 @@ shell          IN AAAA  2001:bc8:3feb:100::10
 ;-----------
 ; dn42
 ;-----------
-flip           IN AAAA  2001:bc8:3feb:100::8
-
 nl-ams1        IN AAAA  2001:bc8:3feb:100::9
 nl-ams1        IN A     51.158.153.183
 

@@ -17,7 +17,6 @@ nl-ams1.flap
 nl-ams2.flap
 
 [dn42_servers]
-flip.flap
 
 [dn42:children]
 dn42_gw
