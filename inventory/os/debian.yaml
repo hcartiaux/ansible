@@ -1,5 +1,5 @@
 ---
-become_method: sudo
+ansible_become_method: sudo
 
 root_group: root
 sudo_group: wheel
