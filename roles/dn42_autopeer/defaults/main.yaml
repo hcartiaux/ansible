@@ -1,0 +1,21 @@
+---
+# User and group to run the DN42-SSHD service
+dn42_autopeer_user: "dn42-sshd"
+dn42_autopeer_group: "dn42-sshd"
+dn42_autopeer_home: "/home/dn42-sshd"
+
+# Repository settings
+dn42_autopeer_repo_url: "https://github.com/hcartiaux/dn42-sshd-autopeer/"
+dn42_autopeer_repo_directory: "{{ dn42_autopeer_home }}/dn42-sshd"
+
+dn42_autopeer_registry_url: "git@git.dn42.dev:dn42/registry.git"
+dn42_autopeer_registry_directory: "{{ dn42_autopeer_home }}/dn42-registry"
+
+dn42_autopeer_ssh_host_key: "{{ dn42_autopeer_home }}/.ssh/id_rsa"
+dn42_autopeer_ssh_listen_address: "::"
+dn42_autopeer_ssh_port: "4242"
+dn42_autopeer_db_path: "{{ dn42_autopeer_home }}/peering.db"
+dn42_autopeer_asn: "4242420263"
+dn42_autopeer_wg_pub_key: "C3Wlu6y+v84FN/vreuTqL6r5wEtGTMXX5rKgHkxDaTI="
+dn42_autopeer_wg_link_local: "fe80:0263::"
+dn42_autopeer_wg_base_port: "52000"

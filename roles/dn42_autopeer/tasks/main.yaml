@@ -1,0 +1,88 @@
+---
+- name: Set OS-specific variables
+  ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
+
+- name: Install required packages for dn42-sshd
+  ansible.builtin.package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ dn42_autopeer_packages }}"
+
+# dn42-sshd user
+- name: Create dedicated user for dn42-sshd
+  ansible.builtin.user:
+    name: "{{ dn42_autopeer_user }}"
+    comment: "Dn42 SSHD Service User"
+    shell: /usr/sbin/nologin
+    create_home: true
+    home: "{{ dn42_autopeer_home }}"
+
+# Git repository clones
+- name: Ensure git.dn42.dev is a known host
+  ansible.builtin.lineinfile:
+    dest: "/root/.ssh/known_hosts"
+    create: true
+    state: present
+    mode: "0644"
+    line: "{{ lookup('pipe', 'ssh-keyscan -q -t rsa git.dn42.dev') }}"
+    regexp: "^git\\.dn42\\.dev"
+- name: Clone dn42 registry repository
+  ansible.builtin.git:
+    repo: "{{ dn42_autopeer_registry_url }}"
+    dest: "{{ dn42_autopeer_registry_directory }}"
+    version: main
+- name: Clone dn42-sshd repository
+  ansible.builtin.git:
+    repo: "{{ dn42_autopeer_repo_url }}"
+    dest: "{{ dn42_autopeer_repo_directory }}"
+    version: main
+
+# SSH host keys
+- name: Create .ssh directory for dn42 user
+  ansible.builtin.file:
+    path: "{{ dn42_autopeer_home }}/.ssh"
+    state: directory
+    owner: "{{ dn42_autopeer_user }}"
+    group: "{{ dn42_autopeer_group }}"
+    mode: "0700"
+- name: Check if SSH key already exists
+  ansible.builtin.stat:
+    path: "{{ dn42_autopeer_home }}/.ssh/id_rsa"
+  register: dn42_autopeer_ssh_key
+- name: Generate SSH key using ssh-keygen (non-interactive)
+  become: true
+  become_user: "{{ dn42_autopeer_user }}"
+  ansible.builtin.command: >
+    ssh-keygen -t rsa -b 4096 -f {{ dn42_autopeer_home }}/.ssh/id_rsa -N ""
+  args:
+    creates: "{{ dn42_autopeer_home }}/.ssh/id_rsa"
+  when: not dn42_autopeer_ssh_key.stat.exists
+- name: Set SSH private key permissions
+  ansible.builtin.file:
+    path: "{{ dn42_autopeer_home }}/.ssh/id_rsa"
+    owner: "{{ dn42_autopeer_user }}"
+    group: "{{ dn42_autopeer_group }}"
+    mode: "0600"
+- name: Set SSH public key permissions
+  ansible.builtin.file:
+    path: "{{ dn42_autopeer_home }}/.ssh/id_rsa.pub"
+    owner: "{{ dn42_autopeer_user }}"
+    group: "{{ dn42_autopeer_group }}"
+    mode: "0644"
+
+# Systemd service
+- name: Create systemd service file
+  ansible.builtin.template:
+    src: templates/dn42-sshd.service.j2
+    dest: /etc/systemd/system/dn42-sshd.service
+    mode: "0644"
+  vars:
+    working_dir: "{{ dn42_autopeer_repo_directory }}"
+    command: python3 dn42-sshd.py --peering
+
+- name: Enable and start dn42-sshd service
+  ansible.builtin.systemd:
+    name: dn42-sshd
+    enabled: true
+    state: started

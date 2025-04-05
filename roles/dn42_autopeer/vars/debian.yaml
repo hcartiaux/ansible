@@ -1,0 +1,6 @@
+---
+dn42_autopeer_packages:
+  - git
+  - python3-paramiko
+  - python3-rich
+  - python3-packaging

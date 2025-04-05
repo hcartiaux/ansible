@@ -1,0 +1,36 @@
+[Unit]
+Description=DN42 SSHD Service
+After=network.target
+
+[Service]
+Type=simple
+User={{ dn42_autopeer_user }}
+Group={{ dn42_autopeer_group }}
+WorkingDirectory={{ dn42_autopeer_repo_directory }}
+ExecStart={{ command }}
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+Environment="DN42_SSH_HOST_KEY={{ dn42_autopeer_ssh_host_key }}"
+Environment="DN42_SSH_LISTEN_ADDRESS={{ dn42_autopeer_ssh_listen_address }}"
+Environment="DN42_SSH_PORT={{ dn42_autopeer_ssh_port }}"
+Environment="DN42_DB_PATH={{ dn42_autopeer_db_path }}"
+Environment="DN42_REGISTRY_DIRECTORY={{ dn42_autopeer_registry_directory }}"
+Environment="DN42_ASN={{ dn42_autopeer_asn }}"
+Environment="DN42_WG_PUB_KEY={{ dn42_autopeer_wg_pub_key }}"
+Environment="DN42_WG_LINK_LOCAL={{ dn42_autopeer_wg_link_local }}"
+Environment="DN42_WG_BASE_PORT={{ dn42_autopeer_wg_base_port }}"
+
+# Security hardening
+ProtectSystem=full
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictAddressFamilies=AF_INET6
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target
