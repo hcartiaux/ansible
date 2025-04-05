@@ -31,12 +31,10 @@
   ansible.builtin.git:
     repo: "{{ dn42_autopeer_registry_url }}"
     dest: "{{ dn42_autopeer_registry_directory }}"
-    version: main
 - name: Clone dn42-sshd repository
   ansible.builtin.git:
     repo: "{{ dn42_autopeer_repo_url }}"
     dest: "{{ dn42_autopeer_repo_directory }}"
-    version: main
 
 # SSH host keys
 - name: Create .ssh directory for dn42 user
