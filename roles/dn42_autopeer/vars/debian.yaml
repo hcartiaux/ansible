@@ -5,3 +5,4 @@ dn42_autopeer_packages:
   - python3-rich
   - python3-packaging
   - python3-dnspython
+  - python3-psutil
