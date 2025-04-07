@@ -69,6 +69,7 @@
     group: "{{ dn42_autopeer_group }}"
     mode: "0644"
 
+
 # Systemd service
 - name: Create systemd service file
   ansible.builtin.template:
@@ -79,8 +80,30 @@
     working_dir: "{{ dn42_autopeer_repo_directory }}"
     command: python3 dn42-sshd.py --peering
 
+# Systemd timer
+# Git repository sync
+- name: Create systemd service file from template
+  template:
+    src: templates/dn42-registry-pull.service.j2
+    dest: /etc/systemd/system/dn42-registry-pull.service
+    mode: '0644'
+- name: Copy systemd timer file
+  copy:
+    src: files/dn42-registry-pull.timer
+    dest: /etc/systemd/system/dn42-registry-pull.timer
+    mode: '0644'
+
+# Enable service and timer
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: yes
 - name: Enable and start dn42-sshd service
   ansible.builtin.systemd:
     name: dn42-sshd
     enabled: true
+    state: started
+- name: Enable and start the timer
+  systemd:
+    name: dn42-registry-pull.timer
+    enabled: yes
     state: started
