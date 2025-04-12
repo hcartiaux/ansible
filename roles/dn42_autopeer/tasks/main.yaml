@@ -78,7 +78,7 @@
     mode: "0644"
   vars:
     working_dir: "{{ dn42_autopeer_repo_directory }}"
-    command: python3 dn42-sshd.py --peering
+    command: python3 dn42-autopeer.py --server
 
 # Systemd timer
 # Git repository sync
