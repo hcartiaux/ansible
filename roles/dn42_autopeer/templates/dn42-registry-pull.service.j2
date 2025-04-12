@@ -3,5 +3,5 @@ Description=Update Git Repository
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/git -C {{ dn42_autopeer_repo_directory }} pull
+ExecStart=/usr/bin/git -C {{ dn42_autopeer_registry_directory }} pull
 User=root
