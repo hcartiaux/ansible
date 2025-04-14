@@ -11,6 +11,8 @@ dn42_autopeer_repo_directory: "{{ dn42_autopeer_home }}/dn42-sshd"
 dn42_autopeer_registry_url: "git@git.dn42.dev:dn42/registry.git"
 dn42_autopeer_registry_directory: "{{ dn42_autopeer_home }}/dn42-registry"
 
+dn42_autopeer_genconfig_path: "/usr/local/bin/dn42-genconfig.sh"
+
 dn42_autopeer_ssh_host_key: "{{ dn42_autopeer_home }}/.ssh/id_rsa"
 dn42_autopeer_ssh_listen_address: "::"
 dn42_autopeer_ssh_port: "4242"

@@ -1,0 +1,22 @@
+[Unit]
+Description=Update the local wg and bird configuration
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart={{ dn42_autopeer_genconfig_path }}
+User=root
+Group=root
+WorkingDirectory=/root/
+
+# Security hardening
+ProtectSystem=true
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictNamespaces=true
+
+[Install]
+WantedBy=multi-user.target

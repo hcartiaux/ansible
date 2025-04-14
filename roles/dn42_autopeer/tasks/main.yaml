@@ -82,16 +82,34 @@
 
 # Systemd timer
 # Git repository sync
-- name: Create systemd service file from template
+- name: Create systemd dn42-registry-pull.service file from template
   template:
     src: templates/dn42-registry-pull.service.j2
     dest: /etc/systemd/system/dn42-registry-pull.service
     mode: '0644'
-- name: Copy systemd timer file
+- name: Copy systemd dn42-registry-pull.timer file
   copy:
     src: files/dn42-registry-pull.timer
     dest: /etc/systemd/system/dn42-registry-pull.timer
     mode: '0644'
+
+# Gen config
+- name: Create systemd dn42-genconfig.service file from template
+  template:
+    src: templates/dn42-genconfig.service.j2
+    dest: /etc/systemd/system/dn42-genconfig.service
+    mode: '0644'
+- name: Copy systemd dn42-genconfig.timer file
+  copy:
+    src: files/dn42-genconfig.timer
+    dest: /etc/systemd/system/dn42-genconfig.timer
+    mode: '0644'
+- name: Copy the genconfig script
+  copy:
+    src: files/dn42-genconfig.sh
+    dest: "{{ dn42_autopeer_genconfig_path }}"
+    mode: '0700'
+
 
 # Enable service and timer
 - name: Reload systemd daemon
@@ -102,8 +120,13 @@
     name: dn42-sshd
     enabled: true
     state: started
-- name: Enable and start the timer
+- name: Enable and start dn42-registry-pull.timer
   systemd:
     name: dn42-registry-pull.timer
+    enabled: yes
+    state: started
+- name: Enable and start dn42-genconfig.timer
+  systemd:
+    name: dn42-genconfig.timer
     enabled: yes
     state: started
