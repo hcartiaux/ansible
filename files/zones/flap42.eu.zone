@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Thu 2025-01-23 23:31:25 hcartiaux>
+; Time-stamp: <Tue 2025-04-15 17:45:46 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  flap42.eu.
 $TTL     300
 @        3600  IN SOA   ns1.flap42.eu. hyacinthe.cartiaux.gmail.com. (
-                        2025012300 ; Serial
+                        2025041500 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -40,3 +40,7 @@ nl-ams1        IN AAAA  2001:bc8:3feb:100::9
 nl-ams1        IN A     51.158.153.183
 
 nl-ams2        IN AAAA  2001:bc8:3feb:100::6
+
+fr-par1        IN AAAA  2001:bc8:710:c528:dc00:ff:fea5:cbfb
+
+par-war1       IN AAAA  2001:bc8:1d90:1293:dc00:ff:fe25:18b9
