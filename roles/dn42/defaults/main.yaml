@@ -1,5 +1,5 @@
 ---
-dn42_config_repository: "git@github.com:hcartiaux/dn42-as4242420263.git"
+dn42_config_repository: "git@gitlab.com:hcartiaux/dn42-as4242420263.git"
 dn42_config_directory: "/etc/dn42-as4242420263"
 
 dn42_ownas: "4242420263"

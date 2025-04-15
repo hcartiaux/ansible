@@ -5,7 +5,7 @@ dn42_autopeer_group: "dn42-sshd"
 dn42_autopeer_home: "/home/dn42-sshd"
 
 # Repository settings
-dn42_autopeer_repo_url: "https://github.com/hcartiaux/dn42-sshd-autopeer/"
+dn42_autopeer_repo_url: "https://brew.bsd.cafe/hcartiaux/dn42-sshd-autopeer"
 dn42_autopeer_repo_directory: "{{ dn42_autopeer_home }}/dn42-sshd"
 
 dn42_autopeer_registry_url: "git@git.dn42.dev:dn42/registry.git"
