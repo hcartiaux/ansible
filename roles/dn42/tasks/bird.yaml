@@ -71,12 +71,6 @@
   notify:
     - Reload bird
 
-- name: Enable service bird
-  ansible.builtin.service:
-    name: "{{ bird_service }}"
-    state: started
-    enabled: true
-
 ###
 # ROA config
 ###
@@ -102,5 +96,15 @@
 - name: Enable the ROA timer
   ansible.builtin.service:
     name: "dn42-roa.timer"
+    state: started
+    enabled: true
+
+###
+# Bird service
+###
+
+- name: Enable service bird
+  ansible.builtin.service:
+    name: "{{ bird_service }}"
     state: started
     enabled: true
