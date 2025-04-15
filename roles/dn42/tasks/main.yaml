@@ -6,19 +6,6 @@
 # Preparation
 ###
 
-- name: Create the root ssh directory
-  ansible.builtin.file:
-    state: directory
-    path: "/root/.ssh"
-
-- name: Ensure github.com is a known host
-  ansible.builtin.lineinfile:
-    dest: /root/.ssh/known_hosts
-    create: true
-    state: present
-    line: "{{ lookup('pipe', 'ssh-keyscan -q -t rsa github.com') }}"
-    regexp: "^github\\.com"
-
 - name: Checkout the configuration repository
   ansible.builtin.git:
     repo: "{{ dn42_config_repository }}"
