@@ -15,6 +15,8 @@ shell.flap    ansible_become_method=doas
 [dn42_gw]
 nl-ams1.flap
 nl-ams2.flap
+fr-par1.flap
+pl-war1.flap
 
 [dn42_servers]
 
