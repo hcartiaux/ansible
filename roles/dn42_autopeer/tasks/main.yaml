@@ -70,6 +70,23 @@
     mode: "0644"
 
 
+# Sudo configuration
+
+- name: Create sudoers file for dn42-sshd/birdc
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/{{ dn42_autopeer_user }}_birdc
+    line: "{{ dn42_autopeer_user }} ALL=(ALL) NOPASSWD:/usr/sbin/birdc show protocols all *"
+    create: yes
+    validate: 'visudo -cf %s'
+    mode: '0440'
+- name: Create sudoers file for dn42-sshd/birdc
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/{{ dn42_autopeer_user }}_wg
+    line: "{{ dn42_autopeer_user }} ALL=(ALL) NOPASSWD:/usr/bin/wg show *"
+    create: yes
+    validate: 'visudo -cf %s'
+    mode: '0440'
+
 # Systemd service
 - name: Create systemd service file
   ansible.builtin.template:
