@@ -1,6 +1,6 @@
 ---
 dn42_ownip: "172.22.144.177"
-dn42_bandwidth: "24" # >= 100Mbps
+dn42_bandwidth: "23" # >= 10Mbps
 dn42_region: "41" # Europe
 dn42_country: "1528" # Netherlands
 dn42_ownipv6: "fd28:7515:7d51:c::1"
