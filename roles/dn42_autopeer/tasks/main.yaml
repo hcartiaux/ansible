@@ -122,8 +122,8 @@
     dest: /etc/systemd/system/dn42-genconfig.timer
     mode: '0644'
 - name: Copy the genconfig script
-  copy:
-    src: files/dn42-genconfig.sh
+  template:
+    src: templates/dn42-genconfig.sh.j2
     dest: "{{ dn42_autopeer_genconfig_path }}"
     mode: '0700'
 

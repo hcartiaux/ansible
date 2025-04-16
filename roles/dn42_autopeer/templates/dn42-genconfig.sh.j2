@@ -3,9 +3,9 @@ shopt -s nullglob
 
 cd /home/dn42-sshd/dn42-sshd
 
-export "DN42_DB_PATH=/home/dn42-sshd/peering.db"
-export "DN42_WG_LINK_LOCAL=fe80:0263::"
-export "DN42_WG_BASE_PORT=52000"
+export "DN42_DB_PATH={{ dn42_autopeer_db_path  }}"
+export "DN42_WG_LINK_LOCAL={{ dn42_autopeer_wg_link_local }}"
+export "DN42_WG_BASE_PORT={{ dn42_autopeer_wg_base_port }}"
 export "DN42_WG_CONFIG_DIR=$HOME/config/wireguard/"
 export "DN42_BIRD_CONFIG_DIR=$HOME/config/bird/"
 export "DN42_WG_PRIV_KEY="$(cat /etc/wireguard/privatekey)""
