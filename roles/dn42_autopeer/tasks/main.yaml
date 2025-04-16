@@ -128,6 +128,15 @@
     mode: '0700'
 
 
+# Peering db file
+- name: Set peering db file permissions
+  ansible.builtin.file:
+    path: "{{ dn42_autopeer_db_path }}"
+    owner: "{{ dn42_autopeer_user }}"
+    group: "{{ dn42_autopeer_group }}"
+    mode: "0644"
+
+
 # Enable service and timer
 - name: Reload systemd daemon
   systemd:
