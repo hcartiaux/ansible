@@ -1,0 +1,12 @@
+[Interface]
+PrivateKey = {{ dn42_wireguard_privatekey | trim }}
+ListenPort = 518{{ dn42_internal_id }}{{ hostvars[target_host]['dn42_internal_id'] }}
+PostUp = /sbin/ip addr add dev %i fe80::{{ dn42_internal_id }}:{{ hostvars[target_host]['dn42_internal_id'] }}/128 peer fe80::{{ hostvars[target_host]['dn42_internal_id'] }}:{{ dn42_internal_id }}/128
+PostUp = /sbin/ip addr add dev %i 169.254.{{ dn42_internal_id }}.{{ hostvars[target_host]['dn42_internal_id'] }}/32 peer 169.254.{{ hostvars[target_host]['dn42_internal_id'] }}.{{ dn42_internal_id }}/32
+Table = off
+
+[Peer]
+PublicKey = {{ hostvars[target_host]['dn42_wireguard_publickey'] }}
+Endpoint = {{ hostvars[target_host]['dn42_server_name'] }}:518{{ hostvars[target_host]['dn42_internal_id'] }}{{ dn42_internal_id }}
+AllowedIPs = fe80::{{ hostvars[target_host]['dn42_internal_id'] }}:{{ dn42_internal_id }}/128, 169.254.{{ hostvars[target_host]['dn42_internal_id'] }}.{{ dn42_internal_id }}/32, 172.16.0.0/12, 10.0.0.0/8, fd00::/8, ff02::1:6/128
+PersistentKeepalive = 30

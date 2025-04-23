@@ -5,6 +5,9 @@ dn42_region: "41" # Europe
 dn42_country: "1528" # Netherlands
 dn42_ownipv6: "fd28:7515:7d51:a::1"
 
+dn42_server_name: "nl-ams1.flap42.eu"
+dn42_internal_id: 1
+
 dn42_wireguard_privatekey: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   36633666626666316631653131663634336531643838326537306531616564623734663031386233

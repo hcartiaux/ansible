@@ -5,6 +5,9 @@ dn42_region: "41" # Europe
 dn42_country: "1528" # Netherlands
 dn42_ownipv6: "fd28:7515:7d51:c::1"
 
+dn42_server_name: "nl-ams2.flap42.eu"
+dn42_internal_id: 2
+
 dn42_wireguard_privatekey: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   32313330646266353563303734623936656161653638653330303432633036623536663735306537
@@ -19,7 +22,6 @@ dn42_autopeer_wg_pub_key: "C3Wlu6y+v84FN/vreuTqL6r5wEtGTMXX5rKgHkxDaTI="
 dn42_autopeer_wg_link_local: "fe80:0263::"
 dn42_autopeer_wg_base_port: "52000"
 dn42_autopeer_reserved_network: "2001:0bc8:3feb::/48"
-dn42_autopeer_server_name: "nl-ams2.flap42.eu"
 
 bind_secondary_zones:
   - zone_name: hcartiaux.dn42

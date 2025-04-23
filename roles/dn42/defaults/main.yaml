@@ -18,3 +18,5 @@ dn42_country: "1250" # France
 
 dn42_wireguard_privatekey: "CHANGEME"
 dn42_wireguard_publickey: "CHANGEME"
+
+dn42_internal_id: 0

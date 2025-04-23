@@ -13,7 +13,6 @@ dn42_autopeer_registry_directory: "{{ dn42_autopeer_home }}/dn42-registry"
 
 dn42_autopeer_genconfig_path: "/usr/local/bin/dn42-genconfig.sh"
 
-dn42_autopeer_server_name: "nl-ams2.flap42.eu"
 dn42_autopeer_ssh_host_key: "{{ dn42_autopeer_home }}/.ssh/id_rsa"
 dn42_autopeer_ssh_listen_address: "::"
 dn42_autopeer_ssh_port: "4242"
