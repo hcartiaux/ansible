@@ -1,9 +1,9 @@
 ---
-dn42_ownip: "172.22.144.177"
+dn42_ownip: "172.22.144.169"
 dn42_bandwidth: "23" # >= 10Mbps
 dn42_region: "41" # Europe
 dn42_country: "1528" # Netherlands
-dn42_ownipv6: "fd28:7515:7d51:c::1"
+dn42_ownipv6: "fd28:7515:7d51:b::1"
 
 dn42_server_name: "nl-ams2.flap42.eu"
 dn42_internal_id: 2
