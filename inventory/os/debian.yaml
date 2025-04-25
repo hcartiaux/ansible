@@ -16,6 +16,7 @@ generic_packages:
   - tcpdump
   - dnsutils
   - htop
+  - dstat
   - strace
   - git
   - tig
