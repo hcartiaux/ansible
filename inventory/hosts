@@ -10,6 +10,7 @@ boxybsd1.flap ansible_become_method=doas
 # Convenience - shell server/jump host
 [shell]
 shell.flap    ansible_become_method=doas
+nl.shell.flap
 
 # DN42 Infra - AS4242420263
 [dn42_gw]
@@ -19,6 +20,7 @@ fr-par1.flap
 pl-war1.flap
 
 [dn42_servers]
+nl.shell.flap
 
 [dn42:children]
 dn42_gw
