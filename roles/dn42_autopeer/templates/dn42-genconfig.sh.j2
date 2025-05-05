@@ -9,6 +9,7 @@ export "DN42_WG_BASE_PORT={{ dn42_autopeer_wg_base_port }}"
 export "DN42_WG_CONFIG_DIR=$HOME/config/wireguard/"
 export "DN42_BIRD_CONFIG_DIR=$HOME/config/bird/"
 export "DN42_WG_PRIV_KEY="$(cat /etc/wireguard/privatekey)""
+export "DN42_KEEP_COUNT=5000"
 
 WG_CONFIG_DIR="/etc/wireguard/"
 BIRD_CONFIG_DIR="/etc/bird/bgp_peers/"
@@ -54,3 +55,18 @@ set -x
 rsync --delete -avz --exclude 'ibgp*' $DN42_BIRD_CONFIG_DIR/current/. $BIRD_CONFIG_DIR/.
 birdc configure
 set +x
+
+# Rotate the files
+all_files=$(find "$DN42_BIRD_CONFIG_DIR" -mindepth 1 -maxdepth 1 -type d | sort -nr)
+file_count=$(echo "$all_files" | wc -l)
+remove_count=$((file_count - DN42_KEEP_COUNT))
+if [ "$remove_count" -gt 0 ]; then
+    echo "$all_files" | tail -n "$remove_count" | xargs -r echo rm -f
+fi
+
+all_files=$(find "$DN42_WG_CONFIG_DIR" -mindepth 1 -maxdepth 1 -type d | sort -nr)
+file_count=$(echo "$all_files" | wc -l)
+remove_count=$((file_count - DN42_KEEP_COUNT))
+if [ "$remove_count" -gt 0 ]; then
+    echo "$all_files" | tail -n "$remove_count" | xargs -r echo rm -f
+fi
