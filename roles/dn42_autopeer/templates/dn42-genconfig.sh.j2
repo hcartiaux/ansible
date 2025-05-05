@@ -61,12 +61,12 @@ all_files=$(find "$DN42_BIRD_CONFIG_DIR" -mindepth 1 -maxdepth 1 -type d | sort 
 file_count=$(echo "$all_files" | wc -l)
 remove_count=$((file_count - DN42_KEEP_COUNT))
 if [ "$remove_count" -gt 0 ]; then
-    echo "$all_files" | tail -n "$remove_count" | xargs -r echo rm -f
+    echo "$all_files" | tail -n "$remove_count" | xargs -r rm -f
 fi
 
 all_files=$(find "$DN42_WG_CONFIG_DIR" -mindepth 1 -maxdepth 1 -type d | sort -nr)
 file_count=$(echo "$all_files" | wc -l)
 remove_count=$((file_count - DN42_KEEP_COUNT))
 if [ "$remove_count" -gt 0 ]; then
-    echo "$all_files" | tail -n "$remove_count" | xargs -r echo rm -f
+    echo "$all_files" | tail -n "$remove_count" | xargs -r rm -f
 fi
