@@ -52,7 +52,7 @@ done
 
 # Synchronize the bird configuration
 set -x
-rsync --delete -avz --exclude 'ibgp*' $DN42_BIRD_CONFIG_DIR/current/. $BIRD_CONFIG_DIR/.
+rsync --delete -avz --exclude 'ibgp*' --exclude 'ebgp_manual_as*' $DN42_BIRD_CONFIG_DIR/current/. $BIRD_CONFIG_DIR/.
 birdc configure
 set +x
 
