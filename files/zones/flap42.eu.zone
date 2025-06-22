@@ -1,10 +1,10 @@
 ; -*-  mode: dns; -*-
-; Time-stamp: <Mon 2025-05-05 22:04:22 hcartiaux>
+; Time-stamp: <Sun 2025-06-22 14:44:54 hcartiaux>
 ; --------------------------------------------------------------------------
 $ORIGIN  flap42.eu.
 $TTL     300
 @        3600  IN SOA   ns1.flap42.eu. hyacinthe.cartiaux.gmail.com. (
-                        2025050500 ; Serial
+                        2025062203 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -26,6 +26,7 @@ ns2            IN AAAA  2a13:e3c1:400e:1337::58
 ;-----------
 ; boxybsd VPS
 boxybsd1       IN CNAME ns2
+boxybsd2       IN AAAA  2a10:ccc2:1337::636
 
 ; dedibox virtualization server
 srv            IN CNAME ns1
