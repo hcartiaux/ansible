@@ -22,6 +22,16 @@
   tags:
     - dotfiles_links
 
+- name: Download git-prompt.sh
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+    dest: "~/.git-prompt.sh"
+    mode: "0644"
+  become: false
+  when: ansible_facts['os_family'] | lower == 'openbsd'
+  tags:
+    - dotfiles_git
+
 - name: Select files to be replaced
   ansible.builtin.find:
     paths: ~/
