@@ -1,29 +1,25 @@
 ---
 - hosts: all
-  vars_files:
-    - inventory/os/{{ ansible_os_family | lower }}.yaml
   become: true
+
+  pre_tasks:
+    - name: "Include OS-specific variables"
+      ansible.builtin.include_vars:
+        file: "inventory/os/{{ ansible_os_family | lower }}.yaml"
+      tags: always
+
   roles:
     - role: generic
-      tags:
-        - generic
-        - init
+      tags: [generic, init]
     - role: motd
-      tags:
-        - motd
-        - init
+      tags: [motd, init]
     - role: sshd
-      tags:
-        - sshd
-        - init
+      tags: [sshd, init]
     - role: dotfiles
-      tags:
-        - dotfiles
-        - init
+      tags: [dotfiles, init]
     - role: shell
-      tags:
-        - shell
-        - init
+      tags: [shell, init]
+
   tasks:
     - name: "[DNS] Set-up bind for Debian"
       ansible.builtin.import_role:
@@ -32,6 +28,7 @@
         - ansible_facts['os_family'] | lower == 'debian'
         - "('dns' in group_names) or ('dn42_gw' in group_names)"
       tags: [dns, bind]
+
     - name: "[DNS] Set-up NSD for OpenBSD"
       ansible.builtin.import_role:
         name: nsd
@@ -55,6 +52,7 @@
         - ansible_facts['os_family'] | lower in ['debian', 'openbsd']
         - "'dn42_gw' in group_names"
       tags: [dn42]
+
     - name: "[DN42] Set-up dn42 auto-peering service"
       ansible.builtin.import_role:
         name: dn42_autopeer
