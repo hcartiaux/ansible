@@ -76,14 +76,14 @@
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/{{ dn42_autopeer_user }}_birdc
     line: "{{ dn42_autopeer_user }} ALL=(ALL) NOPASSWD:/usr/sbin/birdc show protocols all *"
-    create: yes
+    create: true
     validate: 'visudo -cf %s'
     mode: '0440'
 - name: Create sudoers file for dn42-sshd/birdc
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/{{ dn42_autopeer_user }}_wg
     line: "{{ dn42_autopeer_user }} ALL=(ALL) NOPASSWD:/usr/bin/wg show *"
-    create: yes
+    create: true
     validate: 'visudo -cf %s'
     mode: '0440'
 
@@ -140,7 +140,7 @@
 # Enable service and timer
 - name: Reload systemd daemon
   systemd:
-    daemon_reload: yes
+    daemon_reload: true
 - name: Enable and start dn42-sshd service
   ansible.builtin.systemd:
     name: dn42-sshd
@@ -149,10 +149,10 @@
 - name: Enable and start dn42-registry-pull.timer
   systemd:
     name: dn42-registry-pull.timer
-    enabled: yes
+    enabled: true
     state: started
 - name: Enable and start dn42-genconfig.timer
   systemd:
     name: dn42-genconfig.timer
-    enabled: yes
+    enabled: true
     state: started
