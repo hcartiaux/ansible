@@ -2,15 +2,14 @@
 [dedibox]
 srv.flap
 
-# DNS infra
-[dns]
-srv.flap
-boxybsd1.flap ansible_become_method=doas
-
 # Convenience - shell server/jump host
 [shell]
 shell.flap    ansible_become_method=doas
-boxybsd2.flap ansible_become_method=doas
+
+# DNS infra
+[dns]
+srv.flap
+de-fra1.flap ansible_become_method=doas
 
 # DN42 Infra - AS4242420263
 [dn42_gw]
@@ -24,3 +23,13 @@ pl-war1.flap
 [dn42:children]
 dn42_gw
 dn42_servers
+
+[boxybsd]
+de-fra1.flap ansible_become_method=doas
+us-nyc1.flap ansible_become_method=doas
+sg-sin1.flap
+
+[pending]
+nl-ams3.flap
+fr-mrs1.flap
+fr-mrs2.flap
