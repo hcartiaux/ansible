@@ -2,7 +2,7 @@
 $ORIGIN  flap42.eu.
 $TTL     300
 @        3600  IN SOA   ns1.flap42.eu. hyacinthe.cartiaux.gmail.com. (
-                        2025081300 ; Serial
+                        2025090900 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -47,7 +47,6 @@ shell          IN AAAA  2001:bc8:3feb:100::10
 ; manual node
 nl-ams1        IN AAAA  2001:bc8:3feb:100::9
 nl-ams1        IN A     51.158.153.183
-nl-ams3        IN AAAA  2001:bc8:1640:4ea8:dc00:ff:fe56:a11b
 
 ; autopeering nodes
 nl-ams2        IN AAAA  2001:bc8:3feb:100::6
@@ -60,6 +59,13 @@ de-fra1        IN CNAME boxybsd1
 us-nyc1        IN CNAME boxybsd2
 sg-sin1        IN CNAME boxybsd3
 
+; Pending nodes
+
+nl-ams3        IN AAAA  2001:bc8:1640:4ea8:dc00:ff:fe56:a11b
+fr-mrs1        IN A     129.151.240.9
+fr-mrs1        IN AAAA  2603:c026:c108:2101:0:f6f8:ce4:397b
+fr-mrs2        IN A     144.24.204.65
+fr-mrs2        IN AAAA  2603:c026:c108:2101:0:799a:28ff:564
 
 ;-----------
 ; Mail config.
