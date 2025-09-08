@@ -115,7 +115,7 @@
   ansible.builtin.command: whoami
   register: shell_user
   changed_when: false
-- name: Adding user {{ shell_user.stdout }} to group libvirt
+- name: Adding user to group libvirt
   ansible.builtin.user:
     name: "{{ shell_user.stdout }}"
     groups: "{{ virt_group }}"
