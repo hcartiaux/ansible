@@ -5,7 +5,7 @@ dn42_region: "41" # Europe
 dn42_country: "1616" # Poland
 dn42_ownipv6: "fd28:7515:7d51:d::1"
 
-dn42_server_name: "pl-war1.flap42.eu"
+dn42_server_name: "pl-waw1.flap42.eu"
 dn42_internal_id: 4
 
 dn42_wireguard_privatekey: !vault |
