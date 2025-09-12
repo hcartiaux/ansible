@@ -28,18 +28,18 @@ shell.flap ansible_become_method=doas # Convenience - shell server/jump host
 nl-ams1.flap
 nl-ams2.flap
 
+[provider_scaleway]
+nl-ams3.flap
+fr-par1.flap
+pl-waw1.flap
+
 [provider_boxybsd]
+nl-ams4.flap
+nl-egh1.flap
 de-fra1.flap
 us-nyc1.flap
 sg-sin1.flap
-nl-egh1.flap
-nl-ams4.flap
 
 [provider_oracle]
 fr-mrs1.flap
 fr-mrs2.flap
-
-[provider_scaleway]
-fr-par1.flap
-pl-waw1.flap
-nl-ams3.flap
