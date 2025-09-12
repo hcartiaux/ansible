@@ -1,9 +1,9 @@
 ---
 bind_primary_zones:
   - zone_name: nbsdn.fr.eu.org
-    secondary_servers: [2a13:e3c1:400e:1337::58]
+    secondary_servers: [2603:c026:c108:2101:0:f6f8:ce4:397b]
   - zone_name: flap42.eu
-    secondary_servers: [2a13:e3c1:400e:1337::58]
+    secondary_servers: [2603:c026:c108:2101:0:f6f8:ce4:397b]
 dedibox_kvm_host_dhcp_duid: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   35323632306430356137656364353732383439363665636330306132613662623466373038363038

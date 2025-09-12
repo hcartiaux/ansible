@@ -9,7 +9,7 @@ shell.flap    ansible_become_method=doas
 # DNS infra
 [dns]
 srv.flap
-de-fra1.flap ansible_become_method=doas
+fr-mrs1.flap
 
 # DN42 Infra - AS4242420263
 [dn42_gw]
