@@ -4,12 +4,16 @@
 define OWNAS       = {{ dn42_ownas }};
 
 define OWNIP       = {{ dn42_ownip }};
-define OWNNET      = {{ dn42_ownnet }};
-define OWNNETSET   = {{ dn42_ownnetset }};
+{% for net in dn42_ownnet %}
+define OWNNET_{{ loop.index }}    = {{ net }};
+{% endfor %}
+define OWNNETSET   = [{% for net in dn42_ownnet %}{{ net }}+{% if not loop.last %}, {% endif %}{% endfor %}];
 
-define OWNNETv6    = {{ dn42_ownnet_v6 }};
 define OWNIPv6     = {{ dn42_ownipv6 }};
-define OWNNETSETv6 = {{ dn42_ownnetset_v6 }};
+{% for net in dn42_ownnet_v6 %}
+define OWNNETv6_{{ loop.index }}  = {{ net }};
+{% endfor %}
+define OWNNETSETv6 = [{% for net in dn42_ownnet_v6 %}{{ net }}+{% if not loop.last %}, {% endif %}{% endfor %}];
 
 # BGP community
 define BANDWIDTH   = {{ dn42_bandwidth }};

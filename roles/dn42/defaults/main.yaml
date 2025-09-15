@@ -4,12 +4,9 @@ dn42_config_directory: "/etc/dn42-as4242420263"
 
 dn42_ownas: "4242420263"
 dn42_ownip: "172.22.144.161"
-dn42_ownnet: "172.22.144.160/27"
-dn42_ownnetset: "[172.22.144.160/27+]"
-
-dn42_ownnet_v6: "fd28:7515:7d51::/48"
+dn42_ownnet: [172.22.144.160/27]
 dn42_ownipv6: "fd28:7515:7d51:a::1"
-dn42_ownnetset_v6: "[fd28:7515:7d51::/48+]"
+dn42_ownnet_v6: [fd28:7515:7d51::/48]
 
 dn42_bandwidth: "24" # >= 100Mbps
 dn42_linktype: "34" # encrypted with safe vpn solution with PFS (Perfect Forward Secrecy)
