@@ -2,7 +2,7 @@
 $ORIGIN  flap42.eu.
 $TTL     300
 @        3600  IN SOA   ns1.flap42.eu. hyacinthe.cartiaux.gmail.com. (
-                        2025091200 ; Serial
+                        2025091300 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
