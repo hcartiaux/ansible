@@ -29,14 +29,6 @@
         - "('dns' in group_names) or ('dn42_gw' in group_names)"
       tags: [dns, bind]
 
-    - name: "[DNS] Set-up NSD for OpenBSD"
-      ansible.builtin.import_role:
-        name: nsd
-      when:
-        - ansible_facts['os_family'] | lower == 'openbsd'
-        - "('dns' in group_names) or ('dn42_gw' in group_names)"
-      tags: [dns, nsd]
-
     - name: "[DEDIBOX] Set-up libvirt for Debian"
       ansible.builtin.import_role:
         name: dedibox_kvm_host
