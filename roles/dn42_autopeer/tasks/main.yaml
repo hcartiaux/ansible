@@ -127,6 +127,14 @@
     dest: "{{ dn42_autopeer_genconfig_path }}"
     mode: '0700'
 
+# MOTD file
+- name: Copy motd file for autopeer server
+  ansible.builtin.copy:
+    src: "motd_autopeer/{{ dn42_server_name }}"
+    dest: "{{ dn42_autopeer_home }}/motd"
+    owner: "{{ dn42_autopeer_user }}"
+    group: "{{ dn42_autopeer_group }}"
+    mode: "0644"
 
 # Peering db file
 - name: Set peering db file permissions
