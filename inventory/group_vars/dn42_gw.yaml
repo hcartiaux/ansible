@@ -7,6 +7,8 @@ dn42_ownnet: [172.22.144.160/27, 172.22.145.160/27]
 dn42_ownnet_v6: [fd28:7515:7d51::/48]
 dn42_linktype: "34" # encrypted with safe vpn solution with PFS (Perfect Forward Secrecy)
 
+dn42_autopeer_wg_local_address: "fe80::263"
+
 bind_forward:
   - zone_name: dn42
     forwarders: [fd42:d42:d42:53::1, fd42:d42:d42:54::1]
