@@ -2,7 +2,7 @@
 $ORIGIN  160/27.145.22.172.in-addr.arpa.
 $TTL     300
 @        3600  IN SOA   ns1.hcartiaux.dn42. hyacinthe.cartiaux.gmail.com. (
-                        2025091500 ; Serial
+                        2025092100 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -12,3 +12,4 @@ $TTL     300
 @              IN NS    ns2.hcartiaux.dn42.
 
 161            IN PTR   us-nyc1.hcartiaux.dn42.
+165            IN PTR   de-fra1.hcartiaux.dn42.
