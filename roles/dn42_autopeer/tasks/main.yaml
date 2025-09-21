@@ -138,11 +138,13 @@
 
 # Peering db file
 - name: Set peering db file permissions
-  ansible.builtin.file:
-    path: "{{ dn42_autopeer_db_path }}"
+  ansible.builtin.copy:
+    dest: "{{ dn42_autopeer_db_path }}"
     owner: "{{ dn42_autopeer_user }}"
     group: "{{ dn42_autopeer_group }}"
     mode: "0644"
+    content: ""
+    force: no
 
 
 # Enable service and timer
