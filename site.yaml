@@ -5,7 +5,7 @@
   pre_tasks:
     - name: "Include OS-specific variables"
       ansible.builtin.include_vars:
-        file: "inventory/os/{{ ansible_os_family | lower }}.yaml"
+        file: "inventory/os/{{ ansible_facts['os_family'] | lower }}.yaml"
       tags: always
 
   roles:
