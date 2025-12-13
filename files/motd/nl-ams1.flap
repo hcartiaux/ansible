@@ -11,7 +11,7 @@
  `$$b      "-.__
   `Y$$                      nl-ams1.flap42.eu
    `Y$$.                    ----------------------------
-     `$$b.                  OS: Debian GNU/Linux 12 (bookworm) x86_64
-       `Y$$b.               Kernel: 6.1.0-28-amd64
+     `$$b.                  OS: Debian GNU/Linux 13 (trixie) x86_64
+       `Y$$b.               Kernel: 6.12.57+deb13-cloud-amd64
           `"Y$b._           CPU: QEMU Virtual CPU version 2.5+
               `"""          Memory: 384MiB
