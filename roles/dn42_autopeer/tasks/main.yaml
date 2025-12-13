@@ -1,6 +1,6 @@
 ---
 - name: Set OS-specific variables
-  ansible.builtin.include_vars: "{{ ansible_os_family | lower }}.yaml"
+  ansible.builtin.include_vars: "{{ ansible_facts['os_family'] | lower }}.yaml"
 
 - name: Install required packages for dn42-sshd
   ansible.builtin.package:
