@@ -2,7 +2,7 @@
 $ORIGIN  hcartiaux.dn42.
 $TTL     300
 @        3600  IN SOA   ns1.hcartiaux.dn42. hyacinthe.cartiaux.gmail.com. (
-                        2025092100 ; Serial
+                        2026011000 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -27,6 +27,8 @@ us-nyc1        IN AAAA  fd28:7515:7d51:e::1
 us-nyc1        IN A     172.22.145.161
 de-fra1        IN AAAA  fd28:7515:7d51:f::1
 de-fra1        IN A     172.22.145.165
+ca-yto1        IN AAAA  fd28:7515:7d51:9::1
+ca-yto1        IN A     172.22.145.169
 
 
 ns1            IN AAAA  fd28:7515:7d51:a::1
