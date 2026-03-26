@@ -154,15 +154,15 @@
 - name: Enable and start dn42-sshd service
   ansible.builtin.systemd:
     name: dn42-sshd
-    enabled: true
-    state: started
+    enabled: "{{ dn42_autopeer_service }}"
+    state: "{{ 'started' if dn42_autopeer_service | bool else 'stopped' }}"
 - name: Enable and start dn42-registry-pull.timer
   systemd:
     name: dn42-registry-pull.timer
-    enabled: true
-    state: started
+    enabled: "{{ dn42_autopeer_service }}"
+    state: "{{ 'started' if dn42_autopeer_service | bool else 'stopped' }}"
 - name: Enable and start dn42-genconfig.timer
   systemd:
     name: dn42-genconfig.timer
-    enabled: true
-    state: started
+    enabled: "{{ dn42_autopeer_service }}"
+    state: "{{ 'started' if dn42_autopeer_service | bool else 'stopped' }}"

@@ -3,6 +3,7 @@
 dn42_autopeer_user: "dn42-sshd"
 dn42_autopeer_group: "dn42-sshd"
 dn42_autopeer_home: "/home/dn42-sshd"
+dn42_autopeer_service: true
 
 # Repository settings
 dn42_autopeer_repo_url: "https://brew.bsd.cafe/hcartiaux/dn42-sshd-autopeer"
