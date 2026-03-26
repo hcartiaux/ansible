@@ -37,13 +37,8 @@ fr-par1.flap
 pl-waw1.flap
 
 [provider_boxybsd]
-nl-ams4.flap
-nl-egh1.flap
 de-fra1.flap
-de-nue1.flap
 us-nyc1.flap
-sg-sin1.flap
-fr-par2.flap
 ca-yto1.flap
 
 [provider_oracle]
