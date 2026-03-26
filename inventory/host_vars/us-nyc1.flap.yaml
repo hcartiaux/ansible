@@ -18,6 +18,7 @@ dn42_wireguard_privatekey: !vault |
   6363363062336333633062373962633331656331343636376630
 dn42_wireguard_publickey: "uY0GCV3adypvnCWtWcm10PCrJ/OWeplmgL64WWlqZFY="
 
+dn42_autopeer_service: false
 dn42_autopeer_wg_pub_key: "uY0GCV3adypvnCWtWcm10PCrJ/OWeplmgL64WWlqZFY="
 dn42_autopeer_wg_link_local_prefix: "fe80:3263::"
 dn42_autopeer_wg_base_port: "52000"
