@@ -144,7 +144,7 @@
     group: "{{ dn42_autopeer_group }}"
     mode: "0644"
     content: ""
-    force: no
+    force: false
 
 
 # Enable service and timer
