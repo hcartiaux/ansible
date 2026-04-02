@@ -1,7 +1,7 @@
 ---
-###
+# ##
 # Wireguard install
-###
+# ##
 
 - name: Install wireguard packages
   ansible.builtin.package:
@@ -38,14 +38,13 @@
     owner: "root"
     group: "root"
 
-
 - name: Create the wireguard internal tunnels
   ansible.builtin.template:
     src: wireguard.j2
     dest: "{{ wireguard_config_directory }}/wg-int-{{ target_host | split('.') | first }}.conf"
     owner: root
     group: root
-    mode: '0600'
+    mode: "0600"
   loop: "{{ groups['dn42_gw'] | difference([inventory_hostname]) }}"
   loop_control:
     loop_var: target_host

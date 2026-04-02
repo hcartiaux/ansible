@@ -60,7 +60,6 @@
   with_items:
     - "{{ network_packages }}"
 
-
 - name: Dhclient6 configuration
   ansible.builtin.template:
     src: dhclient6.conf.j2

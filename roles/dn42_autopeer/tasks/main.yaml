@@ -69,7 +69,6 @@
     group: "{{ dn42_autopeer_group }}"
     mode: "0644"
 
-
 # Sudo configuration
 
 - name: Create sudoers file for dn42-sshd/birdc
@@ -77,15 +76,15 @@
     path: /etc/sudoers.d/{{ dn42_autopeer_user }}_birdc
     line: "{{ dn42_autopeer_user }} ALL=(ALL) NOPASSWD:/usr/sbin/birdc show protocols all *"
     create: true
-    validate: 'visudo -cf %s'
-    mode: '0440'
+    validate: "visudo -cf %s"
+    mode: "0440"
 - name: Create sudoers file for dn42-sshd/birdc
   ansible.builtin.lineinfile:
     path: /etc/sudoers.d/{{ dn42_autopeer_user }}_wg
     line: "{{ dn42_autopeer_user }} ALL=(ALL) NOPASSWD:/usr/bin/wg show *"
     create: true
-    validate: 'visudo -cf %s'
-    mode: '0440'
+    validate: "visudo -cf %s"
+    mode: "0440"
 
 # Systemd service
 - name: Create systemd service file
@@ -100,32 +99,32 @@
 # Systemd timer
 # Git repository sync
 - name: Create systemd dn42-registry-pull.service file from template
-  template:
+  ansible.builtin.template:
     src: templates/dn42-registry-pull.service.j2
     dest: /etc/systemd/system/dn42-registry-pull.service
-    mode: '0644'
+    mode: "0644"
 - name: Copy systemd dn42-registry-pull.timer file
-  copy:
+  ansible.builtin.copy:
     src: files/dn42-registry-pull.timer
     dest: /etc/systemd/system/dn42-registry-pull.timer
-    mode: '0644'
+    mode: "0644"
 
 # Gen config
 - name: Create systemd dn42-genconfig.service file from template
-  template:
+  ansible.builtin.template:
     src: templates/dn42-genconfig.service.j2
     dest: /etc/systemd/system/dn42-genconfig.service
-    mode: '0644'
+    mode: "0644"
 - name: Copy systemd dn42-genconfig.timer file
-  copy:
+  ansible.builtin.copy:
     src: files/dn42-genconfig.timer
     dest: /etc/systemd/system/dn42-genconfig.timer
-    mode: '0644'
+    mode: "0644"
 - name: Copy the genconfig script
-  template:
+  ansible.builtin.template:
     src: templates/dn42-genconfig.sh.j2
     dest: "{{ dn42_autopeer_genconfig_path }}"
-    mode: '0700'
+    mode: "0700"
 
 # MOTD file
 - name: Copy motd file for autopeer server
@@ -146,10 +145,9 @@
     content: ""
     force: false
 
-
 # Enable service and timer
 - name: Reload systemd daemon
-  systemd:
+  ansible.builtin.systemd:
     daemon_reload: true
 - name: Enable and start dn42-sshd service
   ansible.builtin.systemd:
@@ -157,12 +155,12 @@
     enabled: "{{ dn42_autopeer_service }}"
     state: "{{ 'started' if dn42_autopeer_service | bool else 'stopped' }}"
 - name: Enable and start dn42-registry-pull.timer
-  systemd:
+  ansible.builtin.systemd:
     name: dn42-registry-pull.timer
     enabled: "{{ dn42_autopeer_service }}"
     state: "{{ 'started' if dn42_autopeer_service | bool else 'stopped' }}"
 - name: Enable and start dn42-genconfig.timer
-  systemd:
+  ansible.builtin.systemd:
     name: dn42-genconfig.timer
     enabled: "{{ dn42_autopeer_service }}"
     state: "{{ 'started' if dn42_autopeer_service | bool else 'stopped' }}"
