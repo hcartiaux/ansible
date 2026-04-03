@@ -1,8 +1,8 @@
 # Distro specific variables for Debian
 ---
-# ##
+###
 # Common
-# ##
+###
 
 systemd_directory: /etc/systemd/system
 local_bin_directory: /usr/local/bin
