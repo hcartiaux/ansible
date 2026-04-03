@@ -44,3 +44,6 @@ ca-yto1.flap
 [provider_oracle]
 fr-mrs1.flap
 fr-mrs2.flap
+
+[provider_grifon]
+fr-rns1.flap
