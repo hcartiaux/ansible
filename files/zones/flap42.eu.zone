@@ -2,7 +2,7 @@
 $ORIGIN  flap42.eu.
 $TTL     300
 @        3600  IN SOA   ns1.flap42.eu. hyacinthe.cartiaux.gmail.com. (
-                        2026032600 ; Serial
+                        2026040400 ; Serial
                         10800      ; Refresh
                         3600       ; Retry
                         604800     ; Expire
@@ -60,6 +60,9 @@ ca-yto1        IN AAAA  2a11:6c7:2600:500:d42::cafe
 fr-mrs1        IN CNAME ns2
 fr-mrs2        IN A     144.24.204.65
 fr-mrs2        IN AAAA  2603:c026:c108:2101:0:799a:28ff:564
+
+; Grifon
+fr-rns1        IN AAAA  2a00:5884::42:4242:263:1
 
 ;-----------
 ; Mail config.
