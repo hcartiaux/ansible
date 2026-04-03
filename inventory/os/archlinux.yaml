@@ -1,0 +1,23 @@
+---
+ansible_become_method: sudo
+
+root_group: root
+sudo_group: wheel
+default_shell: /bin/bash
+
+dotfiles_files_root: []
+generic_packages:
+  - inetutils
+  - man-pages
+  - python
+  - vim
+  - tmux
+  - tcpdump
+  - htop
+  - strace
+  - git
+  - tig
+  - curl
+  - wget
+  - rsync
+  - make
