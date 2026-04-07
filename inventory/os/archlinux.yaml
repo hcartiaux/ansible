@@ -21,3 +21,4 @@ generic_packages:
   - wget
   - rsync
   - make
+  - less
