@@ -41,9 +41,9 @@
       ansible.builtin.import_role:
         name: dn42
       when:
-        - ansible_facts['os_family'] | lower in ['debian', 'openbsd']
+        - ansible_facts['os_family'] | lower in ['debian', 'archlinux']
         - "'dn42_gw' in group_names"
-      tags: [dn42]
+      tags: [dn42, dn42_base]
 
     - name: "[DN42] Set-up dn42 auto-peering service"
       ansible.builtin.import_role:

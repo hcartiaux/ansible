@@ -18,6 +18,18 @@
   ansible.builtin.command: "mv {{ bird_config_directory }} {{ bird_config_directory }}.bkp"
   args:
     creates: "{{ bird_config_directory }}.bkp"
+  when:
+    - ansible_facts['os_family'] | lower in ['debian']
+
+- name: Link the default bird configuration file to its real place
+  ansible.builtin.file:
+    state: link
+    src: "/etc/bird.conf"
+    dest: "{{ dn42_config_directory }}/bird.conf"
+    owner: "{{ bird_owner }}"
+    group: "{{ bird_group }}"
+  when:
+    - ansible_facts['os_family'] | lower in ['archlinux']
 
 - name: Create a new bird configuration directory
   ansible.builtin.file:
