@@ -1,0 +1,9 @@
+---
+dn42_autopeer_packages:
+  - git
+  - sqlite
+  - python-paramiko
+  - python-rich
+  - python-packaging
+  - python-dnspython
+  - python-psutil

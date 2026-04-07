@@ -49,7 +49,7 @@
       ansible.builtin.import_role:
         name: dn42_autopeer
       when:
-        - ansible_facts['os_family'] | lower == 'debian'
+        - ansible_facts['os_family'] | lower in ['debian', 'archlinux']
         - "'dn42_gw' in group_names"
         - "'nl-ams1' not in inventory_hostname"
       tags: [dn42, dn42_autopeer]
