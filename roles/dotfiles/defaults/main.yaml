@@ -1,7 +1,5 @@
 ---
-# dotfiles_src: https://github.com/hcartiaux/dotfiles.git
-# IPv6-enabled mirror
-dotfiles_src: https://brew.bsd.cafe/hcartiaux/dotfiles.git
+dotfiles_src: https://codeberg.org/hcartiaux/dotfiles.git
 dotfiles_dest: ~/.dotfiles
 
 dotfiles_files_root:
