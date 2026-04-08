@@ -43,3 +43,12 @@
     line: "{{ lookup('pipe', 'ssh-keyscan -q -t rsa gitlab.com') }}"
     regexp: "^gitlab\\.com"
     mode: "0600"
+
+- name: Ensure codeberg.org is a known host
+  ansible.builtin.lineinfile:
+    dest: /root/.ssh/known_hosts
+    create: true
+    state: present
+    line: "{{ lookup('pipe', 'ssh-keyscan -q -t rsa codeberg.org') }}"
+    regexp: "^codeberg\\.org"
+    mode: "0600"
