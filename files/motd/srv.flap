@@ -8,10 +8,10 @@
  $$:      $$.   -    ,d$$'
  $$;      Y$b._   _,d$P'    srv.flap42.eu
  Y$$.    `.`"Y$$$$P"'       -------------------
- `$$b      "-.__            OS: Debian GNU/Linux 12 (bookworm) x86_64
-  `Y$$                      Kernel: 6.1.0-21-amd64
+ `$$b      "-.__            OS: Debian GNU/Linux 13 (trixie) x86_64
+  `Y$$                      Kernel: 6.12.85+deb13-amd64
    `Y$$.                    CPU: Intel Atom C2338 (2) @ 2.100GHz
-     `$$b.                  Memory: 3911MiB
+     `$$b.                  Memory: 3917MiB
        `Y$$b.
           `"Y$b._
               `"""
