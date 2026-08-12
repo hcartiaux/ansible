@@ -25,7 +25,7 @@
   ansible.builtin.file:
     state: link
     src: "/etc/bird.conf"
-    dest: "{{ dn42_config_directory }}/bird.conf"
+    dest: "{{ bird_config_directory }}/bird.conf"
     owner: "{{ bird_owner }}"
     group: "{{ bird_group }}"
   when:
