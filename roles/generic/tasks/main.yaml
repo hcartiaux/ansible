@@ -34,3 +34,10 @@
     line: "{{ lookup('pipe', 'ssh-keyscan -q -t rsa codeberg.org') }}"
     regexp: "^codeberg\\.org"
     mode: "0600"
+
+# OpenBSD specific
+- name: Disable kernel reordering on OpenBSD
+  ansible.builtin.file:
+    path: /var/db/kernel.SHA256
+    state: absent
+  when: ansible_facts['os_family'] | lower in ['openbsd']
