@@ -19,5 +19,5 @@ generic_packages:
   - git
   - tig
   - rsync--
-  - vim--no_x11
+  - vim--
   - rtorrent
