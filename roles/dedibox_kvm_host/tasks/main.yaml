@@ -64,11 +64,13 @@
   ansible.builtin.template:
     src: dhclient6.conf.j2
     dest: "{{ config_file_dhclient6 }}"
+    mode: "0644"
 
 - name: Default network configuration
   ansible.builtin.template:
     src: files/interfaces
     dest: "{{ config_file_network }}"
+    mode: "0644"
   notify:
     - Restart networking service
 
@@ -76,6 +78,7 @@
   ansible.builtin.template:
     src: phys_iface.j2
     dest: "{{ config_dir_network }}/{{ dedibox_kvm_host_phys_iface_name }}"
+    mode: "0644"
   notify:
     - Restart networking service
 
@@ -83,6 +86,7 @@
   ansible.builtin.template:
     src: bridge_iface.j2
     dest: "{{ config_dir_network }}/{{ dedibox_kvm_host_bridge_iface_name }}"
+    mode: "0644"
   notify:
     - Restart networking service
 
@@ -90,6 +94,7 @@
   ansible.builtin.template:
     src: rules.v4.j2
     dest: "{{ config_file_iptables }}"
+    mode: "0644"
   notify:
     - Restore iptables configuration
 
@@ -108,6 +113,7 @@
   ansible.builtin.template:
     src: TEMPLATE.qemu.j2
     dest: "{{ config_file_apparmor_libvirt }}"
+    mode: "0644"
 
 - name: Get shell user
   become: false
