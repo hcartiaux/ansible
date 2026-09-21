@@ -24,8 +24,8 @@
 - name: Link the default bird configuration file to its real place
   ansible.builtin.file:
     state: link
-    src: "/etc/bird.conf"
-    dest: "{{ bird_config_directory }}/bird.conf"
+    src: "{{ bird_config_directory }}/bird.conf"
+    dest: "/etc/bird.conf"
     owner: "{{ bird_owner }}"
     group: "{{ bird_group }}"
   when:
