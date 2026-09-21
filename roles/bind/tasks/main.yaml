@@ -14,6 +14,7 @@
     dest: "{{ bind_conf_dir }}/named.conf.options"
     owner: "{{ bind_owner }}"
     group: "{{ bind_group }}"
+    mode: "0644"
     validate: named-checkconf %s
   notify:
     - Restart bind
@@ -24,6 +25,7 @@
     dest: "{{ bind_conf_dir }}/named.conf.local"
     owner: "{{ bind_owner }}"
     group: "{{ bind_group }}"
+    mode: "0644"
     validate: named-checkconf %s
   notify:
     - Restart bind
@@ -34,6 +36,7 @@
     dest: "{{ bind_zone_dir }}/db.{{ item.zone_name | replace('/', '-') }}"
     owner: "{{ bind_owner }}"
     group: "{{ bind_group }}"
+    mode: "0644"
     validate: named-checkzone {{ item.zone_name }} %s
   notify:
     - Reload bind
