@@ -4,7 +4,7 @@
     repo: "{{ dotfiles_src }}"
     dest: "{{ dotfiles_dest }}"
   become: false
-  register: git
+  register: dotfiles_git
   tags:
     - dotfiles_git
 
@@ -18,7 +18,7 @@
 - name: Install all dotfiles as simple user
   ansible.builtin.script: "{{ dotfiles_dest }}/install.sh"
   become: false
-  when: git.changed
+  when: dotfiles_git.changed
   tags:
     - dotfiles_links
 
@@ -40,7 +40,7 @@
     recurse: false
     use_regex: false
     hidden: true
-  register: find_result
+  register: dotfiles_find_result
   when:
     - dotfiles_files_root is defined
     - dotfiles_files_root is iterable
@@ -52,7 +52,7 @@
   ansible.builtin.file:
     path: "{{ item.path }}"
     state: absent
-  with_items: "{{ find_result.files | default([]) }}"
+  with_items: "{{ dotfiles_find_result.files | default([]) }}"
   tags:
     - dotfiles_links
 
