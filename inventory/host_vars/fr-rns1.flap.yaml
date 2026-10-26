@@ -22,13 +22,3 @@ dn42_autopeer_wg_pub_key: "ooMm6WV4Dh1zXA0DKT21Qudw6Y/DRkG09e4eLyU0Km0="
 dn42_autopeer_wg_link_local_prefix: "fe80:6263::"
 dn42_autopeer_wg_base_port: "52000"
 dn42_autopeer_reserved_network: "2a00:5884::/64"
-
-bind_secondary_zones:
-  - zone_name: hcartiaux.dn42
-    primary_servers: [fd28:7515:7d51:a::1, 172.22.144.161]
-  - zone_name: 160/27.144.22.172.in-addr.arpa
-    primary_servers: [fd28:7515:7d51:a::1, 172.22.144.161]
-  - zone_name: 160/27.145.22.172.in-addr.arpa
-    primary_servers: [fd28:7515:7d51:a::1, 172.22.144.161]
-  - zone_name: 1.5.d.7.5.1.5.7.8.2.d.f.ip6.arpa
-    primary_servers: [fd28:7515:7d51:a::1, 172.22.144.161]
